@@ -21,12 +21,28 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName(BuildTypes.RELEASE) {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            isMinifyEnabled = Build.Release.isMinifyEnabled
+            enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
+            isDebuggable = Build.Release.isDebuggable
+        }
+        getByName(BuildTypes.DEBUG){
+            isMinifyEnabled = Build.Debug.isMinifyEnabled
+            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
+            isDebuggable = Build.Debug.isDebuggable
+            versionNameSuffix = Build.Debug.versionNameSuffix
+            applicationIdSuffix = Build.Debug.applicationIdSuffix
+        }
+        create(BuildTypes.RELEASE_EXTERNAL_QA){
+            isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
+            enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
+            isDebuggable = Build.ReleaseExternalQa.isDebuggable
+            versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
+            applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
         }
     }
     compileOptions {
