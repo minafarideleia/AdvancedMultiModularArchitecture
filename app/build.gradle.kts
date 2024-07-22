@@ -30,14 +30,14 @@ android {
             enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
             isDebuggable = Build.Release.isDebuggable
         }
-        getByName(BuildTypes.DEBUG){
+        getByName(BuildTypes.DEBUG) {
             isMinifyEnabled = Build.Debug.isMinifyEnabled
             enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
             isDebuggable = Build.Debug.isDebuggable
             versionNameSuffix = Build.Debug.versionNameSuffix
             applicationIdSuffix = Build.Debug.applicationIdSuffix
         }
-        create(BuildTypes.RELEASE_EXTERNAL_QA){
+        create(BuildTypes.RELEASE_EXTERNAL_QA) {
             isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
             enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
             isDebuggable = Build.ReleaseExternalQa.isDebuggable
@@ -49,7 +49,10 @@ android {
     flavorDimensions.add(BuildDimensions.STORE)
 
     productFlavors {
-
+        BuildFlavor.Google.create(this)
+        BuildFlavor.Huawei.create(this)
+        BuildFlavor.Client.create(this)
+        BuildFlavor.Driver.create(this)
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
