@@ -20,6 +20,9 @@ android {
         }
     }
 
+    signingConfigs {
+
+    }
     buildTypes {
         getByName(BuildTypes.RELEASE) {
             proguardFiles(
