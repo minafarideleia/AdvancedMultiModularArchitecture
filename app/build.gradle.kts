@@ -21,8 +21,11 @@ android {
     }
 
     signingConfigs {
-
+        BuildSigning.Release.create(this)
+        BuildSigning.ReleaseExternalQa.create(this)
+        BuildSigning.Debug.create(this)
     }
+
     buildTypes {
         getByName(BuildTypes.RELEASE) {
             proguardFiles(
