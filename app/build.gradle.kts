@@ -21,9 +21,9 @@ android {
     }
 
     signingConfigs {
-        BuildSigning.Release.create(this)
-        BuildSigning.ReleaseExternalQa.create(this)
-        BuildSigning.Debug.create(this)
+        BuildSigning.Release(project).create(this)
+        BuildSigning.ReleaseExternalQa(project).create(this)
+        BuildSigning.Debug(project).create(this)
     }
 
     buildTypes {
@@ -39,10 +39,10 @@ android {
         }
         getByName(BuildTypes.DEBUG) {
             isMinifyEnabled = Build.Debug.isMinifyEnabled
-            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
             isDebuggable = Build.Debug.isDebuggable
             versionNameSuffix = Build.Debug.versionNameSuffix
             applicationIdSuffix = Build.Debug.applicationIdSuffix
+            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
             signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
 
         }
