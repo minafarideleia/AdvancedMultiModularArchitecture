@@ -1,3 +1,5 @@
+package extensions
+
 import com.android.build.api.dsl.ApplicationBuildType
 import org.gradle.api.Project
 import java.util.Properties

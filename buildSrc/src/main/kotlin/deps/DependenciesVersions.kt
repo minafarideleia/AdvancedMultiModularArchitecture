@@ -1,3 +1,5 @@
+package deps
+
 object DependenciesVersions {
     const val CORE_KTX = "1.10.1"
     const val LIFE_CYCLE_RUNTIME_KTX = "2.6.1"
