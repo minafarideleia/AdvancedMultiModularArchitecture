@@ -21,14 +21,6 @@
 .externalNativeBuild
 /dev_credentials.properties
 src/androidTest/shaders/
-/individual_app/configuration.txt
-/individual_app/mapping.txt
-/individual_app/seeds.txt
-/individual_app/unused.txt
-/individual_app/releaseSoftLaunch/individual_app-releaseSoftLaunch.apk
-/individual_app/release/output.json
-/individual_app/releaseSoftLaunch/output.json
-/individual_app/release/output-metadata.json
 /fastlane/README.md
 /fastlane/report.xml
 /.idea/compiler.xml
