@@ -12,6 +12,8 @@ import test.TestDependencies
 plugins {
     id(plugs.BuildPlugins.ANDROID_APPLICATION)
     id(plugs.BuildPlugins.KOTLIN_ANDROID)
+    id(plugs.BuildPlugins.ANDROID)
+    kotlin(plugs.BuildPlugins.KAPT)
 }
 
 android {
