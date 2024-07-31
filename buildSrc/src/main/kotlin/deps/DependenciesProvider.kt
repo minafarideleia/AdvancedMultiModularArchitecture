@@ -2,14 +2,13 @@ package deps
 
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.project
+import test.TestDependencies
 
-
-fun DependencyHandler.room(){
+fun DependencyHandler.room() {
     implementation(Dependencies.roomKtx)
     implementation(Dependencies.roomRuntime)
     kapt(Dependencies.roomCompiler)
 }
-
 
 fun DependencyHandler.retrofit() {
     implementation(Dependencies.retrofit)
@@ -35,7 +34,7 @@ fun DependencyHandler.androidx() {
     implementation(Dependencies.ANDROIDX_UI_GRAPHICS)
     implementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
     implementation(Dependencies.ANDROIDX_MATERIAL3)
- }
+}
 
 fun DependencyHandler.loginModule() {
     moduleImplementation(project(":features:login"))
@@ -43,4 +42,19 @@ fun DependencyHandler.loginModule() {
 
 fun DependencyHandler.homeModule() {
     moduleImplementation(project(":features:home"))
+}
+
+fun DependencyHandler.testDeps() {
+    testImplementation(TestDependencies.ANDROIDX_JUNIT)
+}
+
+fun DependencyHandler.testImplDeps() {
+    androidTestImplementation(TestDependencies.ANDROIDX_JUNIT)
+    androidTestImplementation(TestDependencies.ANDROIDX_ESPRESSO_CORE)
+    androidTestImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
+}
+
+fun DependencyHandler.testDebugDeps() {
+    debugImplementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
+    debugImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
 }
