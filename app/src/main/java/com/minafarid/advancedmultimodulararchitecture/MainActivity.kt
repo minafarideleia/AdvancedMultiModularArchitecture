@@ -15,53 +15,53 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModularArchitectureTheme
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
 
-        // val room = Room.databaseBuilder()
-        enableEdgeToEdge()
-        setContent {
-            AdvancedMultiModularArchitectureTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        modifier = Modifier.padding(innerPadding),
-                    )
-                }
-            }
+    // val room = Room.databaseBuilder()
+    enableEdgeToEdge()
+    setContent {
+      AdvancedMultiModularArchitectureTheme {
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+          Greeting(
+            modifier = Modifier.padding(innerPadding),
+          )
         }
-
-        val counter = 100
-
-        println(counter)
+      }
     }
+
+    val counter = 100
+
+    println(counter)
+  }
 }
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
-        Text(
-            text = "Base Url: ${BuildConfig.BASE_URL}!",
-            modifier = modifier,
-        )
-        Text(
-            text = "DB Version: ${BuildConfig.DB_VERSION}!",
-            modifier = modifier,
-        )
-        Text(
-            text = "Can Clear Cache: ${BuildConfig.CAN_CLEAR_CACHE}!",
-            modifier = modifier,
-        )
-        Text(
-            text = "Map Key: ${BuildConfig.MAP_KEY}!",
-            modifier = modifier,
-        )
-    }
+  Column(modifier = modifier) {
+    Text(
+      text = "Base Url: ${BuildConfig.BASE_URL}!",
+      modifier = modifier,
+    )
+    Text(
+      text = "DB Version: ${BuildConfig.DB_VERSION}!",
+      modifier = modifier,
+    )
+    Text(
+      text = "Can Clear Cache: ${BuildConfig.CAN_CLEAR_CACHE}!",
+      modifier = modifier,
+    )
+    Text(
+      text = "Map Key: ${BuildConfig.MAP_KEY}!",
+      modifier = modifier,
+    )
+  }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AdvancedMultiModularArchitectureTheme {
-        Greeting()
-    }
+  AdvancedMultiModularArchitectureTheme {
+    Greeting()
+  }
 }
