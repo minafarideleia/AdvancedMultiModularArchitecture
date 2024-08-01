@@ -12,26 +12,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.room.Room
 import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModularArchitectureTheme
-import com.minafarid.info.MapProvider
-import com.minafarid.provider.DataProvider
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-      //  val room = Room.databaseBuilder()
+        // val room = Room.databaseBuilder()
         enableEdgeToEdge()
         setContent {
             AdvancedMultiModularArchitectureTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
                     )
                 }
             }
         }
+
+        val counter = 100
+
+        println(counter)
     }
 }
 
@@ -40,23 +41,21 @@ fun Greeting(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Text(
             text = "Base Url: ${BuildConfig.BASE_URL}!",
-            modifier = modifier
+            modifier = modifier,
         )
         Text(
             text = "DB Version: ${BuildConfig.DB_VERSION}!",
-            modifier = modifier
+            modifier = modifier,
         )
         Text(
             text = "Can Clear Cache: ${BuildConfig.CAN_CLEAR_CACHE}!",
-            modifier = modifier
+            modifier = modifier,
         )
         Text(
             text = "Map Key: ${BuildConfig.MAP_KEY}!",
-            modifier = modifier
+            modifier = modifier,
         )
     }
-
-
 }
 
 @Preview(showBackground = true)
