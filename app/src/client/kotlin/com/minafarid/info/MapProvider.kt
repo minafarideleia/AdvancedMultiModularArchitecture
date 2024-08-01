@@ -1,5 +1,5 @@
 package com.minafarid.info
 
 object MapProvider {
-    const val mapId = "6789"
+  const val mapId = "6789"
 }

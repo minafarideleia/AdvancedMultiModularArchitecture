@@ -1,5 +1,5 @@
 package com.minafarid.provider
 
 object DataProvider {
-    const val userName = "mina-Huawei"
+  const val userName = "mina-Huawei"
 }
