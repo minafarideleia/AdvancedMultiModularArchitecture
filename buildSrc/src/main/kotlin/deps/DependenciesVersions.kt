@@ -16,4 +16,5 @@ object DependenciesVersions {
     const val OKHTTP = "5.0.0-alpha.2"
     const val HILT = "2.44"
     const val ROOM = "2.6.1"
+    const val KOTLIN_COMPILER = "1.5.1"
 }
