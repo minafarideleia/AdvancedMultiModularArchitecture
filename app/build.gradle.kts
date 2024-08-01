@@ -1,7 +1,6 @@
 import build.BuildConfig
 import build.BuildCreator
 import build.BuildDimensions
-import deps.Dependencies
 import deps.DependenciesVersions
 import deps.androidx
 import deps.hilt
@@ -17,13 +16,13 @@ import release.ReleaseConfig
 import signing.BuildSigning
 import signing.SigningTypes
 import test.TestBuildConfig
-import test.TestDependencies
 
 plugins {
     id(plugs.BuildPlugins.ANDROID_APPLICATION)
     id(plugs.BuildPlugins.KOTLIN_ANDROID)
     id(plugs.BuildPlugins.ANDROID)
     id(plugs.BuildPlugins.KAPT)
+    id(plugs.BuildPlugins.KTLINT)
 }
 
 android {
