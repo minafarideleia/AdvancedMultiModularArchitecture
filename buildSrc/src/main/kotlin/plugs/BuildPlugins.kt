@@ -9,4 +9,5 @@ object BuildPlugins {
     const val HILT = "com.google.dagger.hilt.android"
     const val KTLINT = "ktlint-settings"
     const val SPOTLESS = "spotless-settings"
+    const val DETEKT = "detekt-settings"
 }
