@@ -7,7 +7,7 @@ import deps.testImplDeps
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
-  id(plugs.BuildPlugins.ANDROID_LIBRARY)
+    id(plugs.BuildPlugins.ANDROID_LIBRARY)
 }
 apply<SharedLibraryGradlePlugin>()
 
