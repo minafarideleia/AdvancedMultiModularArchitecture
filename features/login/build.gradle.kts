@@ -7,19 +7,19 @@ import deps.testImplDeps
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
-  id(plugs.BuildPlugins.ANDROID_LIBRARY)
+    id(plugs.BuildPlugins.ANDROID_LIBRARY)
 }
 apply<SharedLibraryGradlePlugin>()
 
 android {
-  namespace = "com.minafarid.login"
+    namespace = "com.minafarid.login"
 }
 
 dependencies {
-  androidx()
-  hilt()
-  room()
-  testDeps()
-  testImplDeps()
-  testDebugDeps()
+    androidx()
+    hilt()
+    room()
+    testDeps()
+    testImplDeps()
+    testDebugDeps()
 }
