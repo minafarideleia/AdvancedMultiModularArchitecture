@@ -10,7 +10,7 @@ configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
     config.from("${rootProject.projectDir}/detekt/detekt-config.yml")
     buildUponDefaultConfig = false
     allRules = false
-    baseline = file("${rootProject.projectDir}/detekt/detekt-baseline.xml")
+    baseline = file("${rootProject.projectDir}/detekt/${project.name}/detekt-baseline.xml")
     disableDefaultRuleSets = false
     debug = true
     ignoreFailures = false
@@ -33,23 +33,23 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
     reports {
         xml {
             required.set(true)
-            outputLocation.set(file("${rootProject.projectDir}/detekt/detekt-report.xml"))
+            outputLocation.set(file("${rootProject.projectDir}/detekt/${project.name}/detekt-report.xml"))
         }
         html {
             required.set(true)
-            outputLocation.set(file("${rootProject.projectDir}/detekt/detekt-report.html"))
+            outputLocation.set(file("${rootProject.projectDir}/detekt/${project.name}/detekt-report.html"))
         }
         sarif {
             required.set(true)
-            outputLocation.set(file("${rootProject.projectDir}/detekt/detekt-report.sarif"))
+            outputLocation.set(file("${rootProject.projectDir}/detekt/${project.name}/detekt-report.sarif"))
         }
         md {
             required.set(true)
-            outputLocation.set(file("${rootProject.projectDir}/detekt/detekt-report.md"))
+            outputLocation.set(file("${rootProject.projectDir}/detekt/${project.name}/detekt-report.md"))
         }
         txt {
             required.set(true)
-            outputLocation.set(file("${rootProject.projectDir}/detekt/detekt-report.txt"))
+            outputLocation.set(file("${rootProject.projectDir}/detekt/${project.name}/detekt-report.txt"))
         }
     }
     jvmTarget = JavaVersion.VERSION_1_8.toString()
@@ -72,9 +72,8 @@ In Gradle with Detekt, the detektBaseline task is used to create or update a bas
  as it allows you to focus on new issues rather than addressing existing ones immediately
  */
 tasks.named("detekt") {
-    dependsOn(":app:detektBaseline")
+    dependsOn("detektBaseline")
     dependsOn(":features:login:detektBaseline")
-    inputs.file(file("${rootProject.projectDir}/detekt/detekt-baseline.xml"))
 }
 
 tasks.named("preBuild") {
