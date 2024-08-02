@@ -157,11 +157,11 @@
 
 <div>
   <ul>
-    <li>12 number of properties</li>
-    <li>5 number of functions</li>
+    <li>1 number of properties</li>
+    <li>2 number of functions</li>
     <li>2 number of classes</li>
-    <li>2 number of packages</li>
-    <li>5 number of kt files</li>
+    <li>1 number of packages</li>
+    <li>2 number of kt files</li>
   </ul>
 </div>
 
@@ -170,79 +170,25 @@
 
 <div>
   <ul>
-    <li>190 lines of code (loc)</li>
-    <li>152 source lines of code (sloc)</li>
-    <li>93 logical lines of code (lloc)</li>
-    <li>33 comment lines of code (cloc)</li>
-    <li>10 cyclomatic complexity (mcc)</li>
-    <li>5 cognitive complexity</li>
-    <li>4 number of total code smells</li>
-    <li>21% comment source ratio</li>
-    <li>107 mcc per 1,000 lloc</li>
-    <li>43 code smells per 1,000 lloc</li>
+    <li>32 lines of code (loc)</li>
+    <li>16 source lines of code (sloc)</li>
+    <li>8 logical lines of code (lloc)</li>
+    <li>7 comment lines of code (cloc)</li>
+    <li>2 cyclomatic complexity (mcc)</li>
+    <li>0 cognitive complexity</li>
+    <li>0 number of total code smells</li>
+    <li>43% comment source ratio</li>
+    <li>250 mcc per 1,000 lloc</li>
+    <li>0 code smells per 1,000 lloc</li>
   </ul>
 </div>
 
 
 <h2>Findings</h2>
-<div>Total: 4
-  <h3>naming: 4</h3>
-  <details id="FunctionMaxLength" open="open">
-    <summary class="rule-container"><span class="rule">FunctionMaxLength: 1 </span><span class="description">Function names should not be longer than the maximum set in the project configuration.</span></summary>
-<a href="https://detekt.dev/docs/rules/naming#functionmaxlength">Documentation</a>
-    <ul>
-      <li><span class="location">src/main/java/com/minafarid/advancedmultimodulararchitecture/ui/theme/Theme.kt:36:5</span><span class="message">Function names should be at most 30 characters long.</span>
-        <pre><code><span class="lineno">  33 </span>)
-<span class="lineno">  34 </span>
-<span class="lineno">  35 </span>@Composable
-<span class="lineno">  36 </span>fun <span class="error">AdvancedMultiModularArchitectureTheme</span>(
-<span class="lineno">  37 </span>  darkTheme: Boolean = isSystemInDarkTheme(),
-<span class="lineno">  38 </span>  // Dynamic color is available on Android 12+
-<span class="lineno">  39 </span>  dynamicColor: Boolean = true,
-</code></pre>
-      </li>
-    </ul>
-  </details>
-  <details id="FunctionNaming" open="open">
-    <summary class="rule-container"><span class="rule">FunctionNaming: 3 </span><span class="description">Function names should follow the naming convention set in the configuration.</span></summary>
-<a href="https://detekt.dev/docs/rules/naming#functionnaming">Documentation</a>
-    <ul>
-      <li><span class="location">src/main/java/com/minafarid/advancedmultimodulararchitecture/MainActivity.kt:40:5</span><span class="message">Function names should match the pattern: ([a-z][a-zA-Z0-9]*)|(`.*`)</span>
-        <pre><code><span class="lineno">  37 </span>}
-<span class="lineno">  38 </span>
-<span class="lineno">  39 </span>@Composable
-<span class="lineno">  40 </span>fun <span class="error">Greeting</span>(modifier: Modifier = Modifier) {
-<span class="lineno">  41 </span>  Column(modifier = modifier) {
-<span class="lineno">  42 </span>    Text(
-<span class="lineno">  43 </span>      text = &quot;Base Url: ${BuildConfig.BASE_URL}!&quot;,
-</code></pre>
-      </li>
-      <li><span class="location">src/main/java/com/minafarid/advancedmultimodulararchitecture/MainActivity.kt:63:5</span><span class="message">Function names should match the pattern: ([a-z][a-zA-Z0-9]*)|(`.*`)</span>
-        <pre><code><span class="lineno">  60 </span>
-<span class="lineno">  61 </span>@Preview(showBackground = true)
-<span class="lineno">  62 </span>@Composable
-<span class="lineno">  63 </span>fun <span class="error">GreetingPreview</span>() {
-<span class="lineno">  64 </span>  AdvancedMultiModularArchitectureTheme {
-<span class="lineno">  65 </span>    Greeting()
-<span class="lineno">  66 </span>  }
-</code></pre>
-      </li>
-      <li><span class="location">src/main/java/com/minafarid/advancedmultimodulararchitecture/ui/theme/Theme.kt:36:5</span><span class="message">Function names should match the pattern: ([a-z][a-zA-Z0-9]*)|(`.*`)</span>
-        <pre><code><span class="lineno">  33 </span>)
-<span class="lineno">  34 </span>
-<span class="lineno">  35 </span>@Composable
-<span class="lineno">  36 </span>fun <span class="error">AdvancedMultiModularArchitectureTheme</span>(
-<span class="lineno">  37 </span>  darkTheme: Boolean = isSystemInDarkTheme(),
-<span class="lineno">  38 </span>  // Dynamic color is available on Android 12+
-<span class="lineno">  39 </span>  dynamicColor: Boolean = true,
-</code></pre>
-      </li>
-    </ul>
-  </details>
-</div>
+<div>Total: 0</div>
 
 
-generated with <a href="https://detekt.dev/">detekt version 1.23.3</a> on 2024-08-01 22:56:04 UTC.
+generated with <a href="https://detekt.dev/">detekt version 1.23.3</a> on 2024-08-02 11:11:29 UTC.
 
 </body>
 </html>

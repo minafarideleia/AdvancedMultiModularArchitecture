@@ -72,8 +72,9 @@ In Gradle with Detekt, the detektBaseline task is used to create or update a bas
  as it allows you to focus on new issues rather than addressing existing ones immediately
  */
 tasks.named("detekt") {
-    dependsOn("detektBaseline")
+    dependsOn(":app:detektBaseline")
     dependsOn(":features:login:detektBaseline")
+    inputs.file(file("${rootProject.projectDir}/detekt/detekt-baseline.xml"))
 }
 
 tasks.named("preBuild") {
