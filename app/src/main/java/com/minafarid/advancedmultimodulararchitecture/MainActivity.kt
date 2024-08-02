@@ -34,6 +34,9 @@ class MainActivity : ComponentActivity() {
 
     println(counter)
   }
+
+  fun mainMainMainMainMainMainMainMainMainMainMainMainMainMain() {
+  }
 }
 
 @Composable
