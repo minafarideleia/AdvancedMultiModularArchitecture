@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <title>Project Dependency Updates Report</title>
+    <style>
+       .body {
+           font:100% verdana, arial, sans-serif;
+           background-color:#fff
+       }
+       .currentInfo {
+           border-collapse: collapse;
+       }
+       .currentInfo header {
+           cursor:pointer;
+           padding: 12px 15px;
+       }
+       .currentInfo td {
+           border: 1px solid black;
+           padding: 12px 15px;
+           border-collapse: collapse;
+       }
+       .currentInfo tr:nth-child(even) {
+           background-color: #E4FFB7;
+           padding: 12px 15px;
+           border-collapse: collapse;
+       }
+       .currentInfo tr:nth-child(odd) {
+           background-color: #EFFFD2;
+           padding: 12px 15px;
+           border-collapse: collapse;
+       }
+       .warningInfo {
+           border-collapse: collapse;
+       }
+       .warningInfo header {
+           cursor:pointer;
+           padding: 12px 15px;
+       }
+       .warningInfo td {
+           border: 1px solid black;
+           padding: 12px 15px;
+           border-collapse: collapse;
+       }
+       .warningInfo tr:nth-child(even) {
+           background-color: #FFFF66;
+           padding: 12px 15px;
+           border-collapse: collapse;
+       }
+       .warningInfo tr:nth-child(odd) {
+           background-color: #FFFFCC;
+           padding: 12px 15px;
+           border-collapse: collapse;
+       }
+   </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script>
+   $(document).ready(function(){
+    /* set current to collapsed initially */
+    $('#currentId').nextUntil('tr.header').slideToggle(100, function(){});
+    /* click callback to toggle tables */
+    $('tr.header').click(function(){
+        $(this).find('span').text(function(_, value){return value=='(Click to collapse)'?'(Click to expand)':'(Click to collapse)'});
+        $(this).nextUntil('tr.header').slideToggle(100, function(){
+        });
+    });
+   });
+   </script>
+   </head>
+<body>
+<h2>Current dependencies</h2>
+<p>The following dependencies are using the latest milestone version:<p>
+<table class="currentInfo">
+<tr class="header" id = "currentId" ><th colspan="4"><b>Current dependencies<span>(Click to expand)</span></b></th></tr>
+<tr><td><b>Name</b></td><td><b>Group</b></td><td><b>URL</b></td><td><b>Current Version</b></td><td><b>Reason</b></td></tr>
+<tr><td>detekt-cli</td><td>io.gitlab.arturbosch.detekt</td><td><a target="_blank" href="https://detekt.dev">https://detekt.dev</a></td><td>1.23.3 <a target="_blank" href="https://central.sonatype.com/artifact/io.gitlab.arturbosch.detekt/detekt-cli/1.23.3/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>org.jacoco.agent</td><td>org.jacoco</td><td><a target="_blank" href="http://jacoco.org">http://jacoco.org</a></td><td>0.8.9 <a target="_blank" href="https://central.sonatype.com/artifact/org.jacoco/org.jacoco.agent/0.8.9/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>org.jacoco.ant</td><td>org.jacoco</td><td><a target="_blank" href="http://jacoco.org">http://jacoco.org</a></td><td>0.8.9 <a target="_blank" href="https://central.sonatype.com/artifact/org.jacoco/org.jacoco.ant/0.8.9/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>kotlin-build-tools-impl</td><td>org.jetbrains.kotlin</td><td><a target="_blank" href="https://kotlinlang.org/">https://kotlinlang.org/</a></td><td>1.9.0 <a target="_blank" href="https://central.sonatype.com/artifact/org.jetbrains.kotlin/kotlin-build-tools-impl/1.9.0/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>kotlin-compiler-embeddable</td><td>org.jetbrains.kotlin</td><td><a target="_blank" href="https://kotlinlang.org/">https://kotlinlang.org/</a></td><td>1.9.0 <a target="_blank" href="https://central.sonatype.com/artifact/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.9.0/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>kotlin-klib-commonizer-embeddable</td><td>org.jetbrains.kotlin</td><td><a target="_blank" href="https://kotlinlang.org/">https://kotlinlang.org/</a></td><td>1.9.0 <a target="_blank" href="https://central.sonatype.com/artifact/org.jetbrains.kotlin/kotlin-klib-commonizer-embeddable/1.9.0/bundle">Sonatype</a></td><td></td></tr>
+</table>
+<br>
+<h2>Unresolved dependencies</h2>
+<p>Failed to determine the latest version for the following dependencies:<p>
+<table class="warningInfo">
+<tr class="header"><th colspan="4"><b>Unresolved dependencies<span>(Click to collapse)</span></b></th></tr>
+<tr><td><b>Name</b></td><td><b>Group</b></td><td><b>URL</b></td><td><b>Current Version</b></td><td>Reason</td></tr>
+<tr><td>activity-compose</td><td>androidx.activity</td><td></td><td>1.8.0 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.activity/activity-compose/1.8.0/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>compiler</td><td>androidx.compose.compiler</td><td></td><td>1.5.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.compose.compiler/compiler/1.5.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>material3</td><td>androidx.compose.material3</td><td></td><td>1.2.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.compose.material3/material3/1.2.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>ui</td><td>androidx.compose.ui</td><td></td><td>1.6.8 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.compose.ui/ui/1.6.8/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>ui-graphics</td><td>androidx.compose.ui</td><td></td><td>1.6.8 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.compose.ui/ui-graphics/1.6.8/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>ui-test-junit4</td><td>androidx.compose.ui</td><td></td><td>1.6.8 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.compose.ui/ui-test-junit4/1.6.8/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>ui-test-manifest</td><td>androidx.compose.ui</td><td></td><td>1.6.8 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.compose.ui/ui-test-manifest/1.6.8/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>ui-tooling-preview</td><td>androidx.compose.ui</td><td></td><td>1.6.8 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.compose.ui/ui-tooling-preview/1.6.8/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>core-ktx</td><td>androidx.core</td><td></td><td>1.10.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.core/core-ktx/1.10.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>lifecycle-runtime-ktx</td><td>androidx.lifecycle</td><td></td><td>2.6.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.lifecycle/lifecycle-runtime-ktx/2.6.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>room-compiler</td><td>androidx.room</td><td></td><td>2.6.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.room/room-compiler/2.6.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>room-ktx</td><td>androidx.room</td><td></td><td>2.6.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.room/room-ktx/2.6.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>room-runtime</td><td>androidx.room</td><td></td><td>2.6.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.room/room-runtime/2.6.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>espresso-core</td><td>androidx.test.espresso</td><td></td><td>3.5.1 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.test.espresso/espresso-core/3.5.1/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>junit</td><td>androidx.test.ext</td><td></td><td>1.1.5 <a target="_blank" href="https://central.sonatype.com/artifact/androidx.test.ext/junit/1.1.5/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>hilt-android</td><td>com.google.dagger</td><td></td><td>2.44 <a target="_blank" href="https://central.sonatype.com/artifact/com.google.dagger/hilt-android/2.44/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>hilt-compiler</td><td>com.google.dagger</td><td></td><td>2.44 <a target="_blank" href="https://central.sonatype.com/artifact/com.google.dagger/hilt-compiler/2.44/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>ktlint</td><td>com.pinterest</td><td></td><td>0.49.0 <a target="_blank" href="https://central.sonatype.com/artifact/com.pinterest/ktlint/0.49.0/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>detekt-formatting</td><td>io.gitlab.arturbosch.detekt</td><td></td><td>1.23.3 <a target="_blank" href="https://central.sonatype.com/artifact/io.gitlab.arturbosch.detekt/detekt-formatting/1.23.3/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>org.jacoco.ant</td><td>org.jacoco</td><td><a target="_blank" href="0.8.9">0.8.9</a></td><td>0.8.9 <a target="_blank" href="https://central.sonatype.com/artifact/org.jacoco/org.jacoco.ant/0.8.9/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>kotlin-annotation-processing-gradle</td><td>org.jetbrains.kotlin</td><td></td><td>1.9.0 <a target="_blank" href="https://central.sonatype.com/artifact/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.9.0/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>kotlin-stdlib</td><td>org.jetbrains.kotlin</td><td></td><td>1.9.0 <a target="_blank" href="https://central.sonatype.com/artifact/org.jetbrains.kotlin/kotlin-stdlib/1.9.0/bundle">Sonatype</a></td><td></td></tr>
+<tr><td>kotlin-stdlib-jdk8</td><td>org.jetbrains.kotlin</td><td><a target="_blank" href="1.9.0">1.9.0</a></td><td>1.9.0 <a target="_blank" href="https://central.sonatype.com/artifact/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.9.0/bundle">Sonatype</a></td><td></td></tr>
+</table>
+<br>
+<h2>Gradle release-candidate updates</h2>
+Gradle release-candidate updates:
+<p>Gradle: [<a target="_blank" href="https://docs.gradle.org/8.5/release-notes.html">8.5</a> -> <a target="_blank" href="https://docs.gradle.org/8.9/release-notes.html">8.9</a>]</p>
+<p>For information about Gradle releases click <a target="_blank" href="https://gradle.org/releases/">here</a>.</p>
+</body>
+</html>
