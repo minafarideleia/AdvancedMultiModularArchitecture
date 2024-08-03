@@ -40,6 +40,18 @@ fun DependencyHandler.loginModule() {
     moduleImplementation(project(":features:login"))
 }
 
+fun DependencyHandler.dataModule() {
+    moduleImplementation(project(":core:data"))
+}
+
+fun DependencyHandler.domainModule() {
+    moduleImplementation(project(":core:domain"))
+}
+
+fun DependencyHandler.presentationModule() {
+    moduleImplementation(project(":core:presentation"))
+}
+
 fun DependencyHandler.homeModule() {
     moduleImplementation(project(":features:home"))
 }
