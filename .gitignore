@@ -18,6 +18,7 @@
 /buildSrc/build
 /build
 /captures
+/detekt
 .externalNativeBuild
 /dev_credentials.properties
 src/androidTest/shaders/
