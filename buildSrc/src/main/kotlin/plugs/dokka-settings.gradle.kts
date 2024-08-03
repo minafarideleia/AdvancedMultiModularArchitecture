@@ -6,7 +6,7 @@ apply<DokkaPlugin>()
 
 tasks {
     register<DokkaTask>("cDokkaHtml") {
-        outputDirectory.set(file("${project.rootDir}/docs"))
+        outputDirectory.set(file("${project.rootDir}/docs/${project.name}"))
 
         // Suppress obvious functions like default toString or equals. Defaults to true
         suppressObviousFunctions.set(false)
