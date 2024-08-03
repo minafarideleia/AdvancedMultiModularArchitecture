@@ -1,10 +1,11 @@
 import com.github.benmanes.gradle.versions.VersionsPlugin
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import java.util.Locale
-// https://github.com/ben-manes/gradle-versions-plugin/blob/master/README.md
+
 apply<VersionsPlugin>()
 
 tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
+// exclude non stable versions
     resolutionStrategy {
         componentSelection {
             all {
