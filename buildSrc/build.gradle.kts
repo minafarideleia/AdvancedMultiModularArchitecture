@@ -14,4 +14,5 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
     implementation("com.diffplug.spotless:spotless-plugin-gradle:6.22.0")
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.3")
+    implementation("com.github.ben-manes:gradle-versions-plugin:0.51.0")
 }
