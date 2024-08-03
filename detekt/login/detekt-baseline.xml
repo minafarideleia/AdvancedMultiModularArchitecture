@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-<SmellBaseline>
-  <ManuallySuppressedIssues></ManuallySuppressedIssues>
-  <CurrentIssues>
-    <ID>FunctionMaxLength:Test.kt$Test$fun loginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLogin()</ID>
-  </CurrentIssues>
-</SmellBaseline>

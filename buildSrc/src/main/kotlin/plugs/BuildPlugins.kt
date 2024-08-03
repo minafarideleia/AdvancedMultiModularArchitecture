@@ -11,4 +11,5 @@ object BuildPlugins {
     const val SPOTLESS = "spotless-settings"
     const val DETEKT = "detekt-settings"
     const val UPDATE_DEPS_VERSIONS = "update-dependencies"
+    const val DOKKA = "dokka-settings"
 }
