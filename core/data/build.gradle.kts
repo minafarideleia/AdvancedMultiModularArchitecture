@@ -7,19 +7,19 @@ import deps.testImplDeps
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
-    id(plugs.BuildPlugins.ANDROID_LIBRARY)
+  id(plugs.BuildPlugins.ANDROID_LIBRARY)
 }
 apply<SharedLibraryGradlePlugin>()
 
 android {
-    namespace = "com.minafarid.data"
+  namespace = "com.minafarid.data"
 }
 
 dependencies {
-    okHttp()
-    retrofit()
-    hilt()
-    testDeps()
-    testImplDeps()
-    testDebugDeps()
+  okHttp()
+  retrofit()
+  hilt()
+  testDeps()
+  testImplDeps()
+  testDebugDeps()
 }
