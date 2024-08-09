@@ -1,6 +1,7 @@
 package extensions
 
 import com.android.build.api.dsl.ApplicationBuildType
+import com.android.build.api.dsl.LibraryBuildType
 import org.gradle.api.Project
 import java.util.Properties
 
@@ -27,5 +28,18 @@ fun ApplicationBuildType.buildConfigIntField(name: String, value: String) {
 }
 
 fun ApplicationBuildType.buildConfigBooleanField(name: String, value: String) {
+    this.buildConfigField("boolean", name, value)
+}
+
+
+fun LibraryBuildType.buildConfigStringField(name: String, value: String) {
+    this.buildConfigField("String", name, value)
+}
+
+fun LibraryBuildType.buildConfigIntField(name: String, value: String) {
+    this.buildConfigField("int", name, value)
+}
+
+fun LibraryBuildType.buildConfigBooleanField(name: String, value: String) {
     this.buildConfigField("boolean", name, value)
 }
