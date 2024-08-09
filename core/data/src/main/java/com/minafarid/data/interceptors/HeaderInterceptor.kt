@@ -1,4 +1,4 @@
-package com.minafarid.data
+package com.minafarid.data.interceptors
 
 import okhttp3.Interceptor
 import okhttp3.Response
