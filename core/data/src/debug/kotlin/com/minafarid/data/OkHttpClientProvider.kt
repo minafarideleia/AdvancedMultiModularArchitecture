@@ -1,5 +1,6 @@
 package com.minafarid.data
 
+import com.minafarid.data.okhttp.OkHttpClientProviderInterface
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import java.security.cert.X509Certificate
