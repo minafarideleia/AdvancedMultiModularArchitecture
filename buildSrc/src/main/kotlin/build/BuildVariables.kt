@@ -5,4 +5,5 @@ object BuildVariables {
     const val CAN_CLEAR_CACHE = "CAN_CLEAR_CACHE"
     const val DB_VERSION = "DB_VERSION"
     const val MAP_KEY = "MAP_KEY"
+    const val PIN_CERTIFCATE = "PIN_CERTIFCATE"
 }
