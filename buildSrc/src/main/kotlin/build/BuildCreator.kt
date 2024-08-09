@@ -29,6 +29,10 @@ sealed class BuildCreator(val name: String) {
                     BuildVariables.BASE_URL,
                     project.getLocalProperty("dev.debug_endpoint")
                 )
+                buildConfigStringField(
+                    BuildVariables.PIN_CERTIFCATE,
+                    project.getLocalProperty("dev.project.certificate_pin")
+                )
                 buildConfigIntField(
                     BuildVariables.DB_VERSION,
                     project.getLocalProperty("dev.db_version")
@@ -62,6 +66,10 @@ sealed class BuildCreator(val name: String) {
                 buildConfigStringField(
                     BuildVariables.BASE_URL,
                     project.getLocalProperty("dev.prod_endpoint")
+                )
+                buildConfigStringField(
+                    BuildVariables.PIN_CERTIFCATE,
+                    project.getLocalProperty("release.project.certificate_pin")
                 )
                 buildConfigIntField(
                     BuildVariables.DB_VERSION,
@@ -101,6 +109,10 @@ sealed class BuildCreator(val name: String) {
                 buildConfigStringField(
                     BuildVariables.BASE_URL,
                     project.getLocalProperty("dev.qa_endpoint")
+                )
+                buildConfigStringField(
+                    BuildVariables.PIN_CERTIFCATE,
+                    project.getLocalProperty("dev.project.certificate_pin")
                 )
                 buildConfigIntField(
                     BuildVariables.DB_VERSION,
