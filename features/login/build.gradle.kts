@@ -1,5 +1,6 @@
 import deps.androidx
 import deps.hilt
+import deps.retrofit
 import deps.room
 import deps.testDebugDeps
 import deps.testDeps
@@ -17,6 +18,7 @@ android {
 
 dependencies {
   androidx()
+  retrofit()
   hilt()
   room()
   testDeps()
