@@ -1,5 +1,6 @@
 package com.minafarid.data.di
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.minafarid.data.BuildConfig
 import com.minafarid.data.OkHttpClientProvider
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
@@ -11,6 +12,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Call
 import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -32,7 +35,7 @@ class NetworkModule {
         @Named(LOGGING_INTERCEPTOR_TAG) okHttpLoggingInterceptor: Interceptor,
         @Named(HEADER_INTERCEPTOR_TAG) headerInterceptor: Interceptor,
         okHttpClientProvider: OkHttpClientProviderInterface
-    ): Call.Factory {
+    ): OkHttpClient {
         return okHttpClientProvider.getOkHttpClient(BuildConfig.PIN_CERTIFCATE)
             .addInterceptor(okHttpLoggingInterceptor)
             .addInterceptor(headerInterceptor)
@@ -44,4 +47,15 @@ class NetworkModule {
             .writeTimeout(60, TimeUnit.SECONDS)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        val builder = Retrofit.Builder()
+            .baseUrl("")
+            .client(okHttpClient)
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        return builder.build()
+    }
+
 }
