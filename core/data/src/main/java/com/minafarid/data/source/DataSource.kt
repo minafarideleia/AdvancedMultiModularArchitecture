@@ -4,7 +4,7 @@ interface DataSource {
     companion object{
 
         const val SUCCESS = 200
-        const val SEE_OTHERS = 300
+        const val SEE_OTHERS = 303
         const val CREATED = 201
         const val BAD_REQUEST = 400
         const val UNAUTHORISED = 401
