@@ -1,8 +1,12 @@
 package com.minafarid.data.di
 
+import android.content.Context
+import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.minafarid.data.BuildConfig
 import com.minafarid.data.OkHttpClientProvider
+import com.minafarid.data.connectivity.NetworkMonitorImplementer
+import com.minafarid.data.connectivity.NetworkMonitorInterface
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.minafarid.data.factory.ServiceFactory
@@ -22,6 +26,20 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return Gson()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkMonitor(context: Context): NetworkMonitorInterface {
+        return NetworkMonitorImplementer(context)
+    }
+
+
 
     @Provides
     @Singleton
