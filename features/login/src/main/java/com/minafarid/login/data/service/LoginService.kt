@@ -1,7 +1,7 @@
 package com.minafarid.login.data.service
 
 import com.minafarid.login.data.requests.LoginRequestBody
-import com.minafarid.login.data.responses.LoginResponse
+import com.minafarid.login.data.responses.UserResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.Body
@@ -16,7 +16,7 @@ interface LoginService {
     @POST("$BASE_URL/Auth/Login")
     fun login(
         @Body loginRequestBody: LoginRequestBody
-    ): Deferred<Response<LoginResponse>>
+    ): Deferred<Response<UserResponse>>
 
 
     @POST("$BASE_URL/Auth/ForgetPassword")
