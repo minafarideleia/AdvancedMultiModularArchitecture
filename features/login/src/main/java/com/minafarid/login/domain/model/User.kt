@@ -1,4 +1,4 @@
-package com.minafarid.login.domain
+package com.minafarid.login.domain.model
 
 data class User(
     val id: String,
