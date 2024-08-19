@@ -5,17 +5,17 @@ import kotlinx.collections.immutable.persistentListOf
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AppSettings (
-    val language: Language = Language.ENGLISH,
-    val lastKnownLocations2 : PersistentList<Location> = persistentListOf()
+data class AppSettings(
+  val language: Language = Language.ENGLISH,
+  val lastKnownLocations2: PersistentList<Location> = persistentListOf(),
 )
 
 @Serializable
 data class Location(
-    val lat:Double,
-    val long:Double
+  val lat: Double,
+  val long: Double,
 )
 
-enum class Language{
-    ENGLISH, ARABIC, SPANISH
+enum class Language {
+  ENGLISH, ARABIC, SPANISH
 }
