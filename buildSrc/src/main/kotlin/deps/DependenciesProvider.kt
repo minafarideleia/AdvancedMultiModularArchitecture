@@ -55,6 +55,9 @@ fun DependencyHandler.loginModule() {
 fun DependencyHandler.dataModule() {
     moduleImplementation(project(":core:data"))
 }
+fun DependencyHandler.dataStoreModule() {
+    moduleImplementation(project(":core:datastore"))
+}
 
 fun DependencyHandler.domainModule() {
     moduleImplementation(project(":core:domain"))

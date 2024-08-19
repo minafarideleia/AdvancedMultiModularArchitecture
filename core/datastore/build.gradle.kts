@@ -1,7 +1,4 @@
 import deps.dataStore
-import deps.hilt
-import deps.okHttp
-import deps.retrofit
 import deps.testDebugDeps
 import deps.testDeps
 import deps.testImplDeps
@@ -13,14 +10,11 @@ plugins {
 apply<SharedLibraryGradlePlugin>()
 
 android {
-  namespace = "com.minafarid.data"
+  namespace = "com.minafarid.datastore"
 }
 
 dependencies {
-  okHttp()
-  retrofit()
   dataStore()
-  hilt()
   testDeps()
   testImplDeps()
   testDebugDeps()
