@@ -10,6 +10,12 @@ fun DependencyHandler.room() {
     kapt(Dependencies.roomCompiler)
 }
 
+fun DependencyHandler.dataStore() {
+    implementation(Dependencies.datastore)
+    implementation(Dependencies.kotlinCollections)
+    implementation(Dependencies.kotlinSerilaizations)
+ }
+
 fun DependencyHandler.retrofit() {
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitConverterGson)
