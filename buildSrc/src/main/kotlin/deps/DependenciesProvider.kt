@@ -39,6 +39,7 @@ fun DependencyHandler.androidx() {
     implementation(Dependencies.ANDROIDX_UI_GRAPHICS)
     implementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
     implementation(Dependencies.ANDROIDX_MATERIAL3)
+    implementation(Dependencies.WORK_RUNTIME)
 }
 
 fun DependencyHandler.loginModule() {

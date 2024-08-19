@@ -13,6 +13,8 @@ object Dependencies {
         "androidx.compose.ui:ui-tooling-preview:${DependenciesVersions.COMPOSE_UI}"
     const val ANDROIDX_MATERIAL3 =
         "androidx.compose.material3:material3:${DependenciesVersions.MATERIAL_3}"
+    const val WORK_RUNTIME = "androidx.work:work-runtime-ktx:${DependenciesVersions.RUN_TIME}"
+
 
     const val hiltAndroid = "com.google.dagger:hilt-android:${DependenciesVersions.HILT}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${DependenciesVersions.HILT}"

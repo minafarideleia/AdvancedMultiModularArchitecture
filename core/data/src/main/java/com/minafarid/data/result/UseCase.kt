@@ -4,9 +4,9 @@ import com.minafarid.data.model.ErrorMessage
 
 interface UseCase<R> {
 
-    suspend fun onSuccess(success: OutCome.Success<R>)
+  suspend fun onSuccess(success: OutCome.Success<R>)
 
-    suspend fun onEmpty()
+  suspend fun onEmpty()
 
-    suspend fun onError(errorMessage: ErrorMessage)
+  suspend fun onError(errorMessage: ErrorMessage)
 }
