@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AppSettings(
   val language: Language = Language.ENGLISH,
+  @Serializable(with = PersistentListLocationSerializer::class)
   val lastKnownLocations: PersistentList<Location> = persistentListOf(),
 )
 
