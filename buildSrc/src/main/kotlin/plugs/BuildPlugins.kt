@@ -13,4 +13,5 @@ object BuildPlugins {
     const val UPDATE_DEPS_VERSIONS = "update-dependencies"
     const val DOKKA = "dokka-settings"
     const val KOTLIN_SERIALIZATION = "org.jetbrains.kotlin.plugin.serialization"
+    const val GOOGLE_PROTOBUF = "com.google.protobuf"
 }
