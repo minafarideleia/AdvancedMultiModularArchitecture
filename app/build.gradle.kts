@@ -4,7 +4,6 @@ import build.BuildDimensions
 import deps.DependenciesVersions
 import deps.androidx
 import deps.dataModule
-import deps.dataStore
 import deps.dataStoreModule
 import deps.domainModule
 import deps.hilt
@@ -107,7 +106,6 @@ dependencies {
   loginModule()
   dataModule()
   dataStoreModule()
-  dataStore()
   domainModule()
   presentationModule()
   androidx()
