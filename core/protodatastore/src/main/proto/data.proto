@@ -1,0 +1,17 @@
+syntax ="proto3";
+
+option java_package = "com.minafarid.proto";
+option java_multiple_files = true;
+
+message Session{
+  string accessToken = 1;
+  string refreshToken = 2;
+  string userId = 3;
+}
+
+message Preferences{
+  string language = 1;
+  bool isAppLockEnabled = 2;
+  int32 notificationCount = 3;
+  int64 moneyBalance = 4;
+}
