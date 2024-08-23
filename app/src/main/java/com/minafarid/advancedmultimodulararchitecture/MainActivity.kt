@@ -12,61 +12,76 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.datastore.core.DataStore
+import androidx.datastore.core.DataStoreFactory
+import androidx.datastore.dataStoreFile
 import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModularArchitectureTheme
+import com.minafarid.datastore.settings.AppSettings
+import com.minafarid.datastore.settings.AppSettingsSerializer
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 
 class MainActivity : ComponentActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    lateinit var appSettingsDataStore: DataStore<AppSettings>
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    // val room = Room.databaseBuilder()
-    enableEdgeToEdge()
-    setContent {
-      AdvancedMultiModularArchitectureTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-          Greeting(
-            modifier = Modifier.padding(innerPadding),
-          )
+        appSettingsDataStore = DataStoreFactory.create(
+            serializer = AppSettingsSerializer(),
+            produceFile = { dataStoreFile("app_settings.json") },
+            scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+        )
+
+        // val room = Room.databaseBuilder()
+        enableEdgeToEdge()
+        setContent {
+            AdvancedMultiModularArchitectureTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(
+                        modifier = Modifier.padding(innerPadding),
+                    )
+                }
+            }
         }
-      }
+
+        val counter = 100
+
+        println(counter)
     }
 
-    val counter = 100
-
-    println(counter)
-  }
-
-  fun mainMainMainMainMainMainMainMainMainMainMainMainMainMain() {
-  }
+    fun mainMainMainMainMainMainMainMainMainMainMainMainMainMain() {
+    }
 }
 
 @Composable
 @Suppress("FunctionNaming")
 fun Greeting(modifier: Modifier = Modifier) {
-  Column(modifier = modifier) {
-    Text(
-      text = "Base Url: ${BuildConfig.BASE_URL}!",
-      modifier = modifier,
-    )
-    Text(
-      text = "DB Version: ${BuildConfig.DB_VERSION}!",
-      modifier = modifier,
-    )
-    Text(
-      text = "Can Clear Cache: ${BuildConfig.CAN_CLEAR_CACHE}!",
-      modifier = modifier,
-    )
-    Text(
-      text = "Map Key: ${BuildConfig.MAP_KEY}!",
-      modifier = modifier,
-    )
-  }
+    Column(modifier = modifier) {
+        Text(
+            text = "Base Url: ${BuildConfig.BASE_URL}!",
+            modifier = modifier,
+        )
+        Text(
+            text = "DB Version: ${BuildConfig.DB_VERSION}!",
+            modifier = modifier,
+        )
+        Text(
+            text = "Can Clear Cache: ${BuildConfig.CAN_CLEAR_CACHE}!",
+            modifier = modifier,
+        )
+        Text(
+            text = "Map Key: ${BuildConfig.MAP_KEY}!",
+            modifier = modifier,
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 @Suppress("FunctionNaming")
 fun GreetingPreview() {
-  AdvancedMultiModularArchitectureTheme {
-    Greeting()
-  }
+    AdvancedMultiModularArchitectureTheme {
+        Greeting()
+    }
 }
