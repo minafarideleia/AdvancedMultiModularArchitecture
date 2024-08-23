@@ -14,7 +14,13 @@ fun DependencyHandler.dataStore() {
     implementation(Dependencies.datastore)
     implementation(Dependencies.kotlinCollections)
     implementation(Dependencies.kotlinSerilaizations)
- }
+}
+
+fun DependencyHandler.protoDataStore() {
+    implementation(Dependencies.datastore)
+    implementation(Dependencies.protoBufJavaLite)
+    implementation(Dependencies.protoBufKotlinLite)
+}
 
 fun DependencyHandler.retrofit() {
     implementation(Dependencies.retrofit)
@@ -55,8 +61,13 @@ fun DependencyHandler.loginModule() {
 fun DependencyHandler.dataModule() {
     moduleImplementation(project(":core:data"))
 }
+
 fun DependencyHandler.dataStoreModule() {
     moduleImplementation(project(":core:datastore"))
+}
+
+fun DependencyHandler.protoDataStoreModule() {
+    moduleImplementation(project(":core:protodatastore"))
 }
 
 fun DependencyHandler.domainModule() {

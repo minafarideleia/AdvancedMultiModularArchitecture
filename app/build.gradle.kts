@@ -11,6 +11,7 @@ import deps.hilt
 import deps.loginModule
 import deps.okHttp
 import deps.presentationModule
+import deps.protoDataStoreModule
 import deps.retrofit
 import deps.room
 import deps.testDebugDeps
@@ -107,6 +108,7 @@ dependencies {
   loginModule()
   dataModule()
   dataStoreModule()
+  protoDataStoreModule()
   dataStore()
   domainModule()
   presentationModule()
