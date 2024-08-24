@@ -1,4 +1,4 @@
-package com.minafarid.protodatastore.manager
+package com.minafarid.protodatastore.manager.preferences
 
 import com.minafarid.proto.Session
 import kotlinx.coroutines.flow.Flow

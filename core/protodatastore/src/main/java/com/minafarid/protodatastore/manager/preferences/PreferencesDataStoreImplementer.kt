@@ -1,4 +1,4 @@
-package com.minafarid.protodatastore.manager
+package com.minafarid.protodatastore.manager.preferences
 
 import androidx.datastore.core.DataStore
 import com.minafarid.proto.Preferences
