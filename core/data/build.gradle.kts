@@ -1,6 +1,8 @@
 import deps.dataStore
 import deps.hilt
 import deps.okHttp
+import deps.protoDataStore
+import deps.protoDataStoreModule
 import deps.retrofit
 import deps.testDebugDeps
 import deps.testDeps
@@ -18,6 +20,7 @@ android {
 
 dependencies {
   okHttp()
+  protoDataStoreModule()
   retrofit()
   dataStore()
   hilt()
