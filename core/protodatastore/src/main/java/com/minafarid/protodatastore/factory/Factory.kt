@@ -9,11 +9,11 @@ import com.minafarid.protodatastore.serialzer.PreferencesSerializer
 import com.minafarid.protodatastore.serialzer.SessionSerializer
 
 val Context.sessionDataStore: DataStore<Session> by dataStore(
-    fileName = "session.pb",
-    serializer = SessionSerializer
+  fileName = "session.pb",
+  serializer = SessionSerializer,
 )
 
 val Context.preferencesDataStore: DataStore<Preferences> by dataStore(
-    fileName = "preferences.pb",
-    serializer = PreferencesSerializer
+  fileName = "preferences.pb",
+  serializer = PreferencesSerializer,
 )
