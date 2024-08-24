@@ -17,32 +17,31 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object DataStoreModule {
 
-    @Provides
-    @Singleton
-    fun provideSessionDataStore(@ApplicationContext context: Context): DataStore<Session> {
-        return context.sessionDataStore
-    }
+  @Provides
+  @Singleton
+  fun provideSessionDataStore(@ApplicationContext context: Context): DataStore<Session> {
+    return context.sessionDataStore
+  }
 
-    @Provides
-    @Singleton
-    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
-        return context.preferencesDataStore
-    }
+  @Provides
+  @Singleton
+  fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
+    return context.preferencesDataStore
+  }
 
-    @Provides
-    @Singleton
-    fun provideSessionStoreManager(sessionDataStore: DataStore<Session>): SessionDataStoreInterface {
-        return SessionDataStoreImplementer(sessionDataStore)
-    }
+  @Provides
+  @Singleton
+  fun provideSessionStoreManager(sessionDataStore: DataStore<Session>): SessionDataStoreInterface {
+    return SessionDataStoreImplementer(sessionDataStore)
+  }
 
-    @Provides
-    @Singleton
-    fun provideSessionStoreManager(preferencesDataStore: DataStore<Preferences>): PreferencesDataStoreInterface {
-        return PreferencesDataStoreImplementer(preferencesDataStore)
-    }
+  @Provides
+  @Singleton
+  fun providePreferencesStoreManager(preferencesDataStore: DataStore<Preferences>): PreferencesDataStoreInterface {
+    return PreferencesDataStoreImplementer(preferencesDataStore)
+  }
 }
