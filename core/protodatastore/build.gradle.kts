@@ -1,4 +1,5 @@
 import deps.Dependencies.protoBufArtifact
+import deps.hilt
 import deps.protoDataStore
 import deps.testDebugDeps
 import deps.testDeps
@@ -37,6 +38,7 @@ android {
 
 dependencies {
   protoDataStore()
+  hilt()
   testDeps()
   testImplDeps()
   testDebugDeps()
