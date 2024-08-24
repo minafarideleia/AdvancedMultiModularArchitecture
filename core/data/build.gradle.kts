@@ -2,7 +2,6 @@ import deps.chucker
 import deps.dataStore
 import deps.hilt
 import deps.okHttp
-import deps.protoDataStore
 import deps.protoDataStoreModule
 import deps.retrofit
 import deps.testDebugDeps
