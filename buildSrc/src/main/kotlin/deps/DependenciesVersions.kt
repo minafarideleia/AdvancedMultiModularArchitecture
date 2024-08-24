@@ -24,5 +24,6 @@ object DependenciesVersions {
     const val KOTLIN_SERIALIZATIONS = "1.6.2"
     const val PROTO_BUF_JAVA = "4.27.3"
     const val PROTO_BUF_KOTLIN = "4.27.3"
+    const val CHUCKER = "4.0.0"
 
 }

@@ -1,3 +1,4 @@
+import deps.chucker
 import deps.dataStore
 import deps.hilt
 import deps.okHttp
@@ -21,6 +22,7 @@ android {
 dependencies {
   okHttp()
   protoDataStoreModule()
+  chucker()
   retrofit()
   dataStore()
   hilt()
