@@ -7,6 +7,7 @@ import com.minafarid.data.BuildConfig
 import com.minafarid.data.OkHttpClientProvider
 import com.minafarid.data.connectivity.NetworkMonitorImplementer
 import com.minafarid.data.connectivity.NetworkMonitorInterface
+import com.minafarid.data.constants.CHUCKER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.minafarid.data.factory.ServiceFactory
@@ -50,11 +51,13 @@ class NetworkModule {
   fun provideOkHttpCallFactory(
     @Named(LOGGING_INTERCEPTOR_TAG) okHttpLoggingInterceptor: Interceptor,
     @Named(HEADER_INTERCEPTOR_TAG) headerInterceptor: Interceptor,
+    @Named(CHUCKER_INTERCEPTOR_TAG) chuckerInterceptor: Interceptor,
     okHttpClientProvider: OkHttpClientProviderInterface,
   ): OkHttpClient {
     return okHttpClientProvider.getOkHttpClient(BuildConfig.PIN_CERTIFCATE)
       .addInterceptor(okHttpLoggingInterceptor)
       .addInterceptor(headerInterceptor)
+      .addInterceptor(chuckerInterceptor)
       .retryOnConnectionFailure(true)
       .followRedirects(false)
       .followSslRedirects(false)

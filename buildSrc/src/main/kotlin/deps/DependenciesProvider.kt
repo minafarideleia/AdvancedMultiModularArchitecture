@@ -22,6 +22,11 @@ fun DependencyHandler.protoDataStore() {
     implementation(Dependencies.protoBufKotlinLite)
 }
 
+fun DependencyHandler.chucker() {
+    releaseImplementation(Dependencies.chuckerRelease)
+    debugImplementation(Dependencies.chuckerDebug)
+}
+
 fun DependencyHandler.retrofit() {
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitConverterGson)
