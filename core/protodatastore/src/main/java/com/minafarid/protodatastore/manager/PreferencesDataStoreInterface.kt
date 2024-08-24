@@ -1,11 +1,10 @@
 package com.minafarid.protodatastore.manager
 
+import com.minafarid.proto.Session
 import kotlinx.coroutines.flow.Flow
 
 
 interface PreferencesDataStoreInterface {
-    // setter functions
-
     suspend fun setLanguage(language: String)
     suspend fun setIsAppLockEnabled(isAppLockEnabled: Boolean)
     suspend fun setNotificationCount(notificationCount: Int)
@@ -25,4 +24,5 @@ interface PreferencesDataStoreInterface {
 
     suspend fun getMoneyBalance(): Long
     fun getMoneyBalanceFlow(): Flow<Long>
+
 }
