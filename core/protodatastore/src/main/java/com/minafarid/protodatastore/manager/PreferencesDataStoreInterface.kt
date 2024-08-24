@@ -9,7 +9,7 @@ interface PreferencesDataStoreInterface {
     suspend fun setLanguage(language: String)
     suspend fun setIsAppLockEnabled(isAppLockEnabled: Boolean)
     suspend fun setNotificationCount(notificationCount: Int)
-    suspend fun setMoneyBalance(moneyBalance: Int)
+    suspend fun setMoneyBalance(moneyBalance: Long)
 
 
     // getters
@@ -23,6 +23,6 @@ interface PreferencesDataStoreInterface {
     suspend fun getNotificationCount(): Int
     fun getNotificationCountFlow(): Flow<Int>
 
-    suspend fun getMoneyBalance(): Int
-    fun getMoneyBalanceFlow(): Flow<Int>
+    suspend fun getMoneyBalance(): Long
+    fun getMoneyBalanceFlow(): Flow<Long>
 }

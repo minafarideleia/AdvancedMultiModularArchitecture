@@ -3,54 +3,73 @@ package com.minafarid.protodatastore.manager
 import androidx.datastore.core.DataStore
 import com.minafarid.proto.Preferences
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 
 class PreferencesDataStoreImplementer(private val preferencesDataStore: DataStore<Preferences>) :
     PreferencesDataStoreInterface {
     override suspend fun setLanguage(language: String) {
-        TODO("Not yet implemented")
+        preferencesDataStore.updateData { currentPreferencesData ->
+            currentPreferencesData.toBuilder().setLanguage(language).build()
+        }
     }
 
     override suspend fun setIsAppLockEnabled(isAppLockEnabled: Boolean) {
-        TODO("Not yet implemented")
+        preferencesDataStore.updateData { currentPreferencesData ->
+            currentPreferencesData.toBuilder().setIsAppLockEnabled(isAppLockEnabled).build()
+        }
     }
 
     override suspend fun setNotificationCount(notificationCount: Int) {
-        TODO("Not yet implemented")
+        preferencesDataStore.updateData { currentPreferencesData ->
+            currentPreferencesData.toBuilder().setNotificationCount(notificationCount).build()
+        }
     }
 
-    override suspend fun setMoneyBalance(moneyBalance: Int) {
-        TODO("Not yet implemented")
+    override suspend fun setMoneyBalance(moneyBalance: Long) {
+        preferencesDataStore.updateData { currentPreferencesData ->
+            currentPreferencesData.toBuilder().setMoneyBalance(moneyBalance).build()
+        }
     }
 
     override suspend fun getLanguage(): String {
-        TODO("Not yet implemented")
+        return preferencesDataStore.data.first().language
     }
 
     override fun getLanguageFlow(): Flow<String> {
-        TODO("Not yet implemented")
+        return preferencesDataStore.data.map { preferences ->
+            preferences.language
+        }
+
     }
 
     override suspend fun isAppLockEnabled(): Boolean {
-        TODO("Not yet implemented")
+        return preferencesDataStore.data.first().isAppLockEnabled
     }
 
     override fun isAppLockEnabledFlow(): Flow<Boolean> {
-        TODO("Not yet implemented")
+        return preferencesDataStore.data.map { preferences ->
+            preferences.isAppLockEnabled
+        }
     }
 
     override suspend fun getNotificationCount(): Int {
-        TODO("Not yet implemented")
+        return preferencesDataStore.data.first().notificationCount
     }
 
     override fun getNotificationCountFlow(): Flow<Int> {
-        TODO("Not yet implemented")
+        return preferencesDataStore.data.map { preferences ->
+            preferences.notificationCount
+        }
     }
 
-    override suspend fun getMoneyBalance(): Int {
-        TODO("Not yet implemented")
+    override suspend fun getMoneyBalance(): Long {
+        return preferencesDataStore.data.first().moneyBalance
     }
 
-    override fun getMoneyBalanceFlow(): Flow<Int> {
-        TODO("Not yet implemented")
+    override fun getMoneyBalanceFlow(): Flow<Long> {
+        return preferencesDataStore.data.map { preferences ->
+            preferences.moneyBalance
+        }
     }
 }
