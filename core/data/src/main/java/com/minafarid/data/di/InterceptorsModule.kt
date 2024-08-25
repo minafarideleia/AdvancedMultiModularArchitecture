@@ -5,7 +5,6 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
 import com.minafarid.data.BuildConfig
-import com.minafarid.data.constants.ACCESS_TOKEN_TAG
 import com.minafarid.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CHUCKER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CLIENT_ID_TAG
@@ -39,12 +38,10 @@ class InterceptorsModule {
   @Named(HEADER_INTERCEPTOR_TAG)
   fun provideHeaderInterceptor(
     @Named(CLIENT_ID_TAG) clientId: String,
-    @Named(ACCESS_TOKEN_TAG) accessTokenProvider: () -> String?,
     @Named(LANGUAGE_TAG) languageProvider: () -> Locale,
   ): Interceptor {
     return HeaderInterceptor(
       clientId,
-      accessTokenProvider,
       languageProvider,
     )
   }

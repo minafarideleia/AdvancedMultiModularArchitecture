@@ -29,7 +29,7 @@ class AuthenticationInterceptor @Inject constructor(
       runBlocking(coroutineDispatcher) { sessionDataStoreInterface.getAccessToken() }
 
     val authenticatedRequest =
-      request.newBuilder().header(AUTHORIZATION_HEADER, "Bearer $accessToken").build()
+      request.newBuilder().header(AUTHORIZATION_HEADER, "$BEARER $accessToken").build()
 
     val response = chain.proceed(authenticatedRequest)
 
