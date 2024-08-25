@@ -7,11 +7,13 @@ import com.minafarid.data.BuildConfig
 import com.minafarid.data.OkHttpClientProvider
 import com.minafarid.data.connectivity.NetworkMonitorImplementer
 import com.minafarid.data.connectivity.NetworkMonitorInterface
+import com.minafarid.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CHUCKER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.minafarid.data.factory.ServiceFactory
 import com.minafarid.data.okhttp.OkHttpClientProviderInterface
+import com.minafarid.data.service.SessionService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,12 +54,14 @@ class NetworkModule {
     @Named(LOGGING_INTERCEPTOR_TAG) okHttpLoggingInterceptor: Interceptor,
     @Named(HEADER_INTERCEPTOR_TAG) headerInterceptor: Interceptor,
     @Named(CHUCKER_INTERCEPTOR_TAG) chuckerInterceptor: Interceptor,
+    @Named(AUTHENTICATION_INTERCEPTOR_TAG) authenticationInterceptor: Interceptor,
     okHttpClientProvider: OkHttpClientProviderInterface,
   ): OkHttpClient {
     return okHttpClientProvider.getOkHttpClient(BuildConfig.PIN_CERTIFCATE)
       .addInterceptor(okHttpLoggingInterceptor)
       .addInterceptor(headerInterceptor)
       .addInterceptor(chuckerInterceptor)
+      .addInterceptor(authenticationInterceptor)
       .retryOnConnectionFailure(true)
       .followRedirects(false)
       .followSslRedirects(false)
@@ -81,5 +85,11 @@ class NetworkModule {
   @Singleton
   fun provideServiceFactory(retrofit: Retrofit): ServiceFactory {
     return ServiceFactory(retrofit)
+  }
+
+  @Provides
+  @Singleton
+  fun providesSessionService(serviceFactory: ServiceFactory): SessionService {
+    return serviceFactory.create(SessionService::class.java)
   }
 }

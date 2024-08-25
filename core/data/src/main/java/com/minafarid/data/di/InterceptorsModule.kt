@@ -6,19 +6,24 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
 import com.minafarid.data.BuildConfig
 import com.minafarid.data.constants.ACCESS_TOKEN_TAG
+import com.minafarid.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CHUCKER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CLIENT_ID_TAG
+import com.minafarid.data.constants.DISPATCHER_IO_TAG
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LANGUAGE_TAG
 import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.minafarid.data.interceptors.AUTHORIZATION_HEADER
+import com.minafarid.data.interceptors.AuthenticationInterceptor
 import com.minafarid.data.interceptors.CLIENT_ID_HEADER
 import com.minafarid.data.interceptors.HeaderInterceptor
+import com.minafarid.protodatastore.manager.session.SessionDataStoreInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.Locale
@@ -41,6 +46,19 @@ class InterceptorsModule {
       clientId,
       accessTokenProvider,
       languageProvider,
+    )
+  }
+
+  @Provides
+  @Singleton
+  @Named(AUTHENTICATION_INTERCEPTOR_TAG)
+  fun provideAuthenticationInterceptor(
+    sessionDataStoreInterface: SessionDataStoreInterface,
+    @Named(DISPATCHER_IO_TAG) coroutineDispatcher: CoroutineDispatcher,
+  ): Interceptor {
+    return AuthenticationInterceptor(
+      sessionDataStoreInterface,
+      coroutineDispatcher,
     )
   }
 
