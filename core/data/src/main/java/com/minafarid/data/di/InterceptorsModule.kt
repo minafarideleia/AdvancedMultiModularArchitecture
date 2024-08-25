@@ -5,9 +5,11 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
 import com.minafarid.data.BuildConfig
+import com.minafarid.data.connectivity.NetworkMonitorInterface
 import com.minafarid.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CHUCKER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CLIENT_ID_TAG
+import com.minafarid.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.minafarid.data.constants.DISPATCHER_IO_TAG
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LANGUAGE_TAG
@@ -15,6 +17,7 @@ import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.minafarid.data.interceptors.AUTHORIZATION_HEADER
 import com.minafarid.data.interceptors.AuthenticationInterceptor
 import com.minafarid.data.interceptors.CLIENT_ID_HEADER
+import com.minafarid.data.interceptors.ConnectivityInterceptor
 import com.minafarid.data.interceptors.HeaderInterceptor
 import com.minafarid.protodatastore.manager.session.SessionDataStoreInterface
 import dagger.Module
@@ -32,6 +35,17 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class InterceptorsModule {
+
+  @Provides
+  @Singleton
+  @Named(CONNECTIVITY_INTERCEPTOR_TAG)
+  fun provideConnectivityInterceptor(
+    networkMonitorInterface: NetworkMonitorInterface,
+  ): Interceptor {
+    return ConnectivityInterceptor(
+      networkMonitorInterface,
+    )
+  }
 
   @Provides
   @Singleton

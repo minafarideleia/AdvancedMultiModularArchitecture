@@ -9,6 +9,7 @@ import com.minafarid.data.connectivity.NetworkMonitorImplementer
 import com.minafarid.data.connectivity.NetworkMonitorInterface
 import com.minafarid.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
 import com.minafarid.data.constants.CHUCKER_INTERCEPTOR_TAG
+import com.minafarid.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.minafarid.data.factory.ServiceFactory
@@ -54,12 +55,14 @@ class NetworkModule {
     @Named(LOGGING_INTERCEPTOR_TAG) okHttpLoggingInterceptor: Interceptor,
     @Named(HEADER_INTERCEPTOR_TAG) headerInterceptor: Interceptor,
     @Named(CHUCKER_INTERCEPTOR_TAG) chuckerInterceptor: Interceptor,
+    @Named(CONNECTIVITY_INTERCEPTOR_TAG) connectivityInterceptor: Interceptor,
     @Named(AUTHENTICATION_INTERCEPTOR_TAG) authenticationInterceptor: Interceptor,
     okHttpClientProvider: OkHttpClientProviderInterface,
   ): OkHttpClient {
     return okHttpClientProvider.getOkHttpClient(BuildConfig.PIN_CERTIFCATE)
       .addInterceptor(okHttpLoggingInterceptor)
       .addInterceptor(headerInterceptor)
+      .addInterceptor(connectivityInterceptor)
       .addInterceptor(chuckerInterceptor)
       .addInterceptor(authenticationInterceptor)
       .retryOnConnectionFailure(true)
