@@ -1,7 +1,6 @@
 package com.minafarid.login.data.di
 
 import com.google.gson.Gson
-import com.minafarid.data.connectivity.NetworkMonitorInterface
 import com.minafarid.data.constants.DISPATCHER_DEFAULT_TAG
 import com.minafarid.data.constants.USER_ID_TAG
 import com.minafarid.data.factory.ServiceFactory
@@ -34,10 +33,9 @@ class NetworkModule {
   fun provideNetworkDataSource(
     loginService: LoginService,
     gson: Gson,
-    networkMonitorInterface: NetworkMonitorInterface,
     @Named(USER_ID_TAG) userIdProvider: () -> String,
   ): NetworkDataSource<LoginService> {
-    return NetworkDataSource(loginService, gson, networkMonitorInterface, userIdProvider)
+    return NetworkDataSource(loginService, gson, userIdProvider)
   }
 
   @Provides
