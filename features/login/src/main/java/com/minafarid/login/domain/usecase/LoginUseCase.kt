@@ -6,11 +6,11 @@ import com.minafarid.login.data.source.LoginRemote
 import com.minafarid.login.domain.model.User
 
 class LoginUseCase(private val loginRemote: LoginRemote) :
-    AsyncUseCase<LoginUseCase.Input, User>() {
+  AsyncUseCase<LoginUseCase.Input, User>() {
 
-    override suspend fun run(input: Input): OutCome<User> {
-        return loginRemote.login(username = input.username, password = input.password)
-    }
+  override suspend fun run(input: Input): OutCome<User> {
+    return loginRemote.login(username = input.username, password = input.password)
+  }
 
-    data class Input(val username: String, val password: String)
+  data class Input(val username: String, val password: String)
 }
