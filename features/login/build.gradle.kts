@@ -11,6 +11,7 @@ import plugs.SharedLibraryGradlePlugin
 
 plugins {
   id(plugs.BuildPlugins.ANDROID_LIBRARY)
+  id("org.jetbrains.kotlin.android")
 }
 apply<SharedLibraryGradlePlugin>()
 
