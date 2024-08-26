@@ -1,6 +1,6 @@
 package com.minafarid.data.result
 
-import com.minafarid.data.model.ErrorMessage
+import com.minafarid.domain.model.ErrorMessage
 
 interface UseCase<R> {
 
@@ -8,5 +8,5 @@ interface UseCase<R> {
 
   suspend fun onEmpty()
 
-  suspend fun onError(errorMessage: ErrorMessage)
+  suspend fun onError(errorMessage: com.minafarid.domain.model.ErrorMessage)
 }

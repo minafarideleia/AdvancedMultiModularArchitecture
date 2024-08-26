@@ -1,11 +1,11 @@
 package com.minafarid.data.result
 
-import com.minafarid.data.model.ErrorMessage
+import com.minafarid.domain.model.ErrorMessage
 
 sealed class OutCome<T> {
   abstract fun isSuccess(): Boolean
 
-  open fun errorMessage(): ErrorMessage? = null
+  open fun errorMessage(): com.minafarid.domain.model.ErrorMessage? = null
 
   abstract suspend fun accept(useCase: UseCase<T>)
 
@@ -17,10 +17,10 @@ sealed class OutCome<T> {
     }
   }
 
-  class Error<T>(private val errorMessage: ErrorMessage) : OutCome<T>() {
+  class Error<T>(private val errorMessage: com.minafarid.domain.model.ErrorMessage) : OutCome<T>() {
     override fun isSuccess(): Boolean = false
 
-    override fun errorMessage(): ErrorMessage = errorMessage
+    override fun errorMessage(): com.minafarid.domain.model.ErrorMessage = errorMessage
 
     override suspend fun accept(useCase: UseCase<T>) {
       useCase.onError(errorMessage)
@@ -37,7 +37,7 @@ sealed class OutCome<T> {
 
   companion object {
     fun <T> success(data: T) = Success(data)
-    fun <T> error(errorMessage: ErrorMessage) = Error<T>(errorMessage)
+    fun <T> error(errorMessage: com.minafarid.domain.model.ErrorMessage) = Error<T>(errorMessage)
     fun <T> empty() = Empty<T>()
   }
 }

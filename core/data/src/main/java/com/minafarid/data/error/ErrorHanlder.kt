@@ -1,17 +1,7 @@
 package com.minafarid.data.error
 
 import com.google.gson.Gson
-import com.minafarid.data.model.ErrorMessage
 import com.minafarid.data.response.ErrorResponse
-
-// mapping errorResponse to ErrorMessage model
-fun ErrorResponse.toDomain(code: Int): ErrorMessage {
-  return ErrorMessage(
-    code = code,
-    message = errorMessage.orEmpty(),
-    errorFieldList = errorFieldList ?: emptyList(),
-  )
-}
 
 // create default error response
 

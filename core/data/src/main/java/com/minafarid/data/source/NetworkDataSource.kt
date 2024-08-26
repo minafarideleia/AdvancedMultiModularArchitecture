@@ -4,8 +4,8 @@ import com.google.gson.Gson
 import com.minafarid.data.constants.HEADER_LOCATION
 import com.minafarid.data.error.getDefaultErrorResponse
 import com.minafarid.data.error.getErrorResponse
-import com.minafarid.data.error.toDomain
 import com.minafarid.data.interceptors.NoConnectivityException
+import com.minafarid.data.mapper.toDomain
 import com.minafarid.data.response.ErrorResponse
 import com.minafarid.data.result.OutCome
 import com.minafarid.data.source.DataSource.Companion.NO_INTERNET
