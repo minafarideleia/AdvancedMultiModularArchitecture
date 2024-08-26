@@ -7,7 +7,7 @@ import com.minafarid.data.error.getErrorResponse
 import com.minafarid.data.interceptors.NoConnectivityException
 import com.minafarid.data.mapper.toDomain
 import com.minafarid.data.response.ErrorResponse
-import com.minafarid.data.result.OutCome
+import com.minafarid.domain.result.OutCome
 import com.minafarid.data.source.DataSource.Companion.NO_INTERNET
 import com.minafarid.data.source.DataSource.Companion.SEE_OTHERS
 import com.minafarid.data.source.DataSource.Companion.SSL_PINNING

@@ -1,4 +1,4 @@
-package com.minafarid.data.result
+package com.minafarid.domain.result
 
 import kotlinx.coroutines.isActive
 import kotlin.coroutines.coroutineContext
