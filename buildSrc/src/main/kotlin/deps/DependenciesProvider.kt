@@ -60,6 +60,9 @@ fun DependencyHandler.androidx() {
     implementation(Dependencies.APP_COMPAT)
     implementation(Dependencies.MATERIAL)
     implementation(Dependencies.ANDROIDX_ACTIVITY)
+    implementation(Dependencies.COMPOSE_MATERIAL)
+    implementation(Dependencies.COMPOSE_COMPILER)
+    implementation(Dependencies.COMPOSE_RUNTIME)
 }
 
 fun DependencyHandler.loginModule() {

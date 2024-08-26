@@ -1,3 +1,4 @@
+import deps.DependenciesVersions
 import deps.androidx
 import deps.dataModule
 import deps.domainModule
@@ -11,12 +12,20 @@ import plugs.SharedLibraryGradlePlugin
 
 plugins {
   id(plugs.BuildPlugins.ANDROID_LIBRARY)
-  id("org.jetbrains.kotlin.android")
+  id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
 }
 apply<SharedLibraryGradlePlugin>()
 
 android {
   namespace = "com.minafarid.login"
+
+  composeOptions {
+    kotlinCompilerExtensionVersion = DependenciesVersions.KOTLIN_COMPILER
+  }
+
+  buildFeatures {
+    compose = true
+  }
 }
 
 dependencies {
