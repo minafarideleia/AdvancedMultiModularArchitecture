@@ -1,6 +1,6 @@
-package com.minafarid.data.result
+package com.minafarid.domain.usecase
 
-import com.minafarid.domain.model.ErrorMessage
+import com.minafarid.domain.result.OutCome
 
 interface UseCase<R> {
 

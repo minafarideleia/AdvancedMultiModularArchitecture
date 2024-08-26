@@ -1,7 +1,7 @@
 package com.minafarid.login.data.source
 
 import com.minafarid.data.mapper.toDomain
-import com.minafarid.data.result.OutCome
+import com.minafarid.domain.result.OutCome
 import com.minafarid.data.source.NetworkDataSource
 import com.minafarid.login.data.mapper.LoginMapper
 import com.minafarid.login.data.requests.LoginRequestBody

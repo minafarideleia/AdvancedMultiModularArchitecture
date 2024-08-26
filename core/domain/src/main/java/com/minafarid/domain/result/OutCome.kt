@@ -1,6 +1,6 @@
-package com.minafarid.data.result
+package com.minafarid.domain.result
 
-import com.minafarid.domain.model.ErrorMessage
+import com.minafarid.domain.usecase.UseCase
 
 sealed class OutCome<T> {
   abstract fun isSuccess(): Boolean
