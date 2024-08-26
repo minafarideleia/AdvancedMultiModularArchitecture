@@ -5,11 +5,11 @@ import com.minafarid.data.constants.DISPATCHER_DEFAULT_TAG
 import com.minafarid.data.constants.USER_ID_TAG
 import com.minafarid.data.factory.ServiceFactory
 import com.minafarid.data.source.NetworkDataSource
+import com.minafarid.login.data.mapper.LoginMapper
+import com.minafarid.login.data.mapper.LoginMapperImplementer
 import com.minafarid.login.data.service.LoginService
 import com.minafarid.login.data.source.LoginRemote
 import com.minafarid.login.data.source.LoginRemoteImplementer
-import com.minafarid.login.domain.mapper.LoginMapper
-import com.minafarid.login.domain.mapper.LoginMapperImplementer
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,11 +1,11 @@
 package com.minafarid.login.data.source
 
-import com.minafarid.data.error.toDomain
+import com.minafarid.data.mapper.toDomain
 import com.minafarid.data.result.OutCome
 import com.minafarid.data.source.NetworkDataSource
+import com.minafarid.login.data.mapper.LoginMapper
 import com.minafarid.login.data.requests.LoginRequestBody
 import com.minafarid.login.data.service.LoginService
-import com.minafarid.login.domain.mapper.LoginMapper
 import com.minafarid.login.domain.model.User
 
 class LoginRemoteImplementer(

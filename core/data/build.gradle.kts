@@ -1,5 +1,6 @@
 import deps.chucker
 import deps.dataStore
+import deps.domainModule
 import deps.hilt
 import deps.okHttp
 import deps.protoDataStoreModule
@@ -19,6 +20,7 @@ android {
 }
 
 dependencies {
+  domainModule()
   okHttp()
   protoDataStoreModule()
   chucker()

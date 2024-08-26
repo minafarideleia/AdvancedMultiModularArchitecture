@@ -1,4 +1,4 @@
-package com.minafarid.data.model
+package com.minafarid.domain.model
 
 data class ErrorMessage(
   val code: Int,

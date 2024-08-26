@@ -1,4 +1,4 @@
-package com.minafarid.login.domain.mapper
+package com.minafarid.login.data.mapper
 
 import com.minafarid.login.data.responses.UserResponse
 import com.minafarid.login.domain.model.User
