@@ -21,39 +21,38 @@ import com.minafarid.login.presentation.viewmodel.LoginViewModel
 
 @Composable
 fun LoginScreen(loginViewModel: LoginViewModel) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+  var username by remember { mutableStateOf("") }
+  var password by remember { mutableStateOf("") }
 
-    Surface(modifier = Modifier.fillMaxSize()) {
+  Surface(modifier = Modifier.fillMaxSize()) {
+    Column(
+      modifier = Modifier.padding(16.dp),
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center,
+    ) {
+      OutlinedTextField(
+        value = username,
+        onValueChange = { username = it },
+        label = { Text(text = "Username") },
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(8.dp),
+      )
+      OutlinedTextField(
+        value = password,
+        onValueChange = { password = it },
+        label = { Text(text = "Username") },
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(8.dp),
+      )
 
-        Column(
-            modifier = Modifier.padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            OutlinedTextField(
-                value = username,
-                onValueChange = { username = it },
-                label = { Text(text = "Username") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            )
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text(text = "Username") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            )
-
-            Button(modifier = Modifier.fillMaxWidth(),
-                onClick = { loginViewModel.login(username, password) }) {
-                Text(text = "Login")
-            }
-
-        }
-
+      Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { loginViewModel.login(username, password) },
+      ) {
+        Text(text = "Login")
+      }
     }
+  }
 }
