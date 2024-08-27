@@ -1,4 +1,4 @@
-package com.minafarid.login.presentation.view
+package com.minafarid.login.presentation.error
 
 import com.minafarid.login.R
 
