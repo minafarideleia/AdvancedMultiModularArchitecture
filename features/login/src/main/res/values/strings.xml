@@ -1,0 +1,7 @@
+<resources>
+    <string name="no_error" />
+    <string name="username_error">The string must be alphanumeric</string>
+    <string name="password_error">The string must be alphanumeric and contain at least one lowercase letter, one uppercase letter, and one special character.</string>
+    <string name="username_length_error">Username length should be more than 5</string>
+    <string name="password_length_error">Password length should be more than 6 and less than 11</string>
+</resources>

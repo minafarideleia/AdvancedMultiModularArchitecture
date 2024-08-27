@@ -41,7 +41,7 @@ fun LoginScreen(loginViewModel: LoginViewModel) {
       OutlinedTextField(
         value = password,
         onValueChange = { password = it },
-        label = { Text(text = "Username") },
+        label = { Text(text = "Password") },
         modifier = Modifier
           .fillMaxWidth()
           .padding(8.dp),
