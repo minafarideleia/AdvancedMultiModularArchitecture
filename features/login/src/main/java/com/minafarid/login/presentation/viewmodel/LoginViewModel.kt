@@ -1,3 +1,10 @@
 package com.minafarid.login.presentation.viewmodel
 
-class LoginViewModel
+import androidx.lifecycle.ViewModel
+
+class LoginViewModel : ViewModel(){
+    fun login(username: String, password: String) {
+        TODO("Not yet implemented")
+    }
+
+}
