@@ -42,5 +42,8 @@ object LoginValidator {
         userName.count() > USERNAME_LENGTH
 
     private fun String.isAlphaNumeric() = matches("[a-zA-Z0-9]+".toRegex())
+    fun canDoLogin(userNameError: LoginError, passwordError: LoginError): Boolean {
+        return userNameError == LoginError.NoError && passwordError == LoginError.NoError
+    }
 
 }

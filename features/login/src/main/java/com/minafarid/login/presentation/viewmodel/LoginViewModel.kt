@@ -2,9 +2,11 @@ package com.minafarid.login.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.minafarid.login.presentation.error.LoginError
 import com.minafarid.login.presentation.protocol.LoginInput
 import com.minafarid.login.presentation.protocol.LoginOutput
 import com.minafarid.login.presentation.protocol.LoginViewState
+import com.minafarid.login.presentation.validator.LoginValidator
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -20,10 +22,27 @@ class LoginViewModel : ViewModel() {
     fun setInput(input: LoginInput) {
         when (input) {
             is LoginInput.LoginButtonClicked -> login()
-            is LoginInput.PasswordUpdated -> TODO()
+            is LoginInput.PasswordUpdated -> updateState { copy(password = input.password) }
             is LoginInput.RegisterButtonClicked -> sendOutput { LoginOutput.NavigateToRegister }
-            is LoginInput.UserNameUpdated -> TODO()
+            is LoginInput.UserNameUpdated -> updateState { copy(userName = input.username) }
         }
+    }
+
+    private fun updateState(updateState: LoginViewState.() -> LoginViewState) {
+        loginViewState = loginViewState.updateState()
+        validate()
+    }
+
+    private fun validate() {
+        val userNameError: LoginError = LoginValidator.userNameError(loginViewState.userName)
+        val passwordError: LoginError = LoginValidator.passwordError(loginViewState.password)
+        val isLoginButtonEnabled: Boolean = LoginValidator.canDoLogin(userNameError, passwordError)
+
+        loginViewState = loginViewState.copy(
+            isLoginButtonEnabled = isLoginButtonEnabled,
+            userNameError = userNameError,
+            passwordError = passwordError
+        )
     }
 
     private fun sendOutput(action: () -> LoginOutput) {
