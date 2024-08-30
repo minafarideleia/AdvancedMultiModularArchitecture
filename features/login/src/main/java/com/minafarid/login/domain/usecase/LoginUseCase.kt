@@ -4,8 +4,9 @@ import com.minafarid.domain.result.OutCome
 import com.minafarid.domain.usecase.AsyncUseCase
 import com.minafarid.login.data.source.LoginRemote
 import com.minafarid.login.domain.model.User
+import javax.inject.Inject
 
-class LoginUseCase(private val loginRemote: LoginRemote) :
+class LoginUseCase @Inject constructor(private val loginRemote: LoginRemote) :
   AsyncUseCase<LoginUseCase.Input, User>() {
 
   override suspend fun run(input: Input): OutCome<User> {
