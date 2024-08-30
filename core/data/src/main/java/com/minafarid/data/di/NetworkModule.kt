@@ -14,6 +14,7 @@ import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.minafarid.data.factory.ServiceFactory
 import com.minafarid.data.okhttp.OkHttpClientProviderInterface
+import com.minafarid.data.service.BASE_URL
 import com.minafarid.data.service.SessionService
 import dagger.Module
 import dagger.Provides
@@ -22,6 +23,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -78,8 +80,9 @@ class NetworkModule {
   @Singleton
   fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
     val builder = Retrofit.Builder()
-      .baseUrl("")
+      .baseUrl(BASE_URL)
       .client(okHttpClient)
+      .addConverterFactory(GsonConverterFactory.create())
       .addCallAdapterFactory(CoroutineCallAdapterFactory())
     return builder.build()
   }
