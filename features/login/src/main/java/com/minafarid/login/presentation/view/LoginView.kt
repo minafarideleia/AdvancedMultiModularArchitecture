@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.minafarid.login.R
@@ -32,83 +33,86 @@ import com.minafarid.login.presentation.viewmodel.LoginViewModel
 
 @Composable
 fun LoginScreen(loginViewState: LoginViewState, loginViewModel: LoginViewModel) {
+  // React to viewOutput events
+  var userNameText by remember { mutableStateOf("") }
+  var passwordText by remember { mutableStateOf("") }
 
-    // React to viewOutput events
-
-    LaunchedEffect(loginViewModel) {
-        loginViewModel.viewOutput.collect { output ->
-            when (output) {
-                is LoginOutput.NavigateToMain -> TODO()
-                is LoginOutput.NavigateToRegister -> TODO()
-                is LoginOutput.ShowError -> TODO()
-            }
-        }
+  LaunchedEffect(loginViewModel) {
+    loginViewModel.viewOutput.collect { output ->
+      when (output) {
+        is LoginOutput.NavigateToMain -> TODO()
+        is LoginOutput.NavigateToRegister -> TODO()
+        is LoginOutput.ShowError -> TODO()
+      }
     }
+  }
 
-    Surface(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-        ) {
-            CustomTextField(
-                label = stringResource(id = R.string.username_label),
-                value = loginViewState.userName,
-                errorText = stringResource(id = loginViewState.userNameError.getErrorMessage()),
-                showError = loginViewState.showUsernameError()
-            ) { userName ->
-                loginViewModel.setInput(LoginInput.UserNameUpdated(userName))
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            CustomTextField(
-                label = stringResource(id = R.string.password_label),
-                value = loginViewState.password,
-                errorText = stringResource(id = loginViewState.passwordError.getErrorMessage()),
-                showError = loginViewState.showPasswordError()
-            ) { password ->
-                loginViewModel.setInput(LoginInput.PasswordUpdated(password))
-            }
-            Spacer(modifier = Modifier.height(16.dp))
+  Surface(modifier = Modifier.fillMaxSize()) {
+    Column(
+      modifier = Modifier.padding(16.dp),
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center,
+    ) {
+      CustomTextField(
+        label = stringResource(id = R.string.username_label),
+        value = userNameText,
+        errorText = stringResource(id = loginViewState.userNameError.getErrorMessage()),
+        showError = loginViewState.showUsernameError(),
+      ) { userName ->
+//        loginViewModel.setInput(LoginInput.UserNameUpdated(userName))
+        userNameText = userName
+      }
+      Spacer(modifier = Modifier.height(16.dp))
+      CustomTextField(
+        label = stringResource(id = R.string.password_label),
+        value = passwordText,
+        errorText = stringResource(id = loginViewState.passwordError.getErrorMessage()),
+        showError = loginViewState.showPasswordError(),
+      ) { password ->
+//                loginViewModel.setInput(LoginInput.PasswordUpdated(password))
+        passwordText = password
+      }
+      Spacer(modifier = Modifier.height(16.dp))
 
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = { loginViewModel.login() },
-            ) {
-                Text(text = "Login")
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            TextButton(onClick = { loginViewModel.setInput(LoginInput.RegisterButtonClicked) }) {
-                Text(text = "Sign up Now!")
-            }
-        }
+      Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { loginViewModel.login() },
+      ) {
+        Text(text = "Login")
+      }
+      Spacer(modifier = Modifier.height(16.dp))
+      TextButton(onClick = { loginViewModel.setInput(LoginInput.RegisterButtonClicked) }) {
+        Text(text = "Sign up Now!")
+      }
     }
-
+  }
 }
-
 
 @Composable
 fun CustomTextField(
-    label: String,
-    value: String,
-    showError: Boolean,
-    errorText: String,
-    visualTransformation: VisualTransformation = VisualTransformation.None,
-    onChanged: (String) -> Unit
+  label: String,
+  value: String,
+  showError: Boolean,
+  errorText: String,
+  visualTransformation: VisualTransformation = VisualTransformation.None,
+  onChanged: (String) -> Unit,
 ) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = { onChanged(it) },
-        label = { Text(text = label) },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-        isError = showError,
-        visualTransformation = visualTransformation
+  OutlinedTextField(
+    value = value,
+    onValueChange = { onChanged(it) },
+    label = { Text(text = label) },
+    textStyle = TextStyle(color = Color.Blue),
+    modifier = Modifier
+      .fillMaxWidth()
+      .padding(8.dp),
+    isError = showError,
+    visualTransformation = visualTransformation,
+  )
+  if (showError) {
+    Text(
+      text = errorText,
+      color = Color.Red,
+      modifier = Modifier.padding(all = 8.dp),
     )
-    if (showError) {
-        Text(
-            text = errorText, color = Color.Red,
-            modifier = Modifier.padding(all = 8.dp)
-        )
-    }
+  }
 }
