@@ -13,6 +13,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,11 +26,24 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.minafarid.login.R
 import com.minafarid.login.presentation.protocol.LoginInput
+import com.minafarid.login.presentation.protocol.LoginOutput
 import com.minafarid.login.presentation.protocol.LoginViewState
 import com.minafarid.login.presentation.viewmodel.LoginViewModel
 
 @Composable
 fun LoginScreen(loginViewState: LoginViewState, loginViewModel: LoginViewModel) {
+
+    // React to viewOutput events
+
+    LaunchedEffect(loginViewModel) {
+        loginViewModel.viewOutput.collect { output ->
+            when (output) {
+                is LoginOutput.NavigateToMain -> TODO()
+                is LoginOutput.NavigateToRegister -> TODO()
+                is LoginOutput.ShowError -> TODO()
+            }
+        }
+    }
 
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
