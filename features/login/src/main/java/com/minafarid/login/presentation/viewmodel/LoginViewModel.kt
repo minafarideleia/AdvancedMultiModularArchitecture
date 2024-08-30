@@ -2,16 +2,20 @@ package com.minafarid.login.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.minafarid.login.domain.usecase.LoginUseCase
 import com.minafarid.login.presentation.error.LoginError
 import com.minafarid.login.presentation.protocol.LoginInput
 import com.minafarid.login.presentation.protocol.LoginOutput
 import com.minafarid.login.presentation.protocol.LoginViewState
 import com.minafarid.login.presentation.validator.LoginValidator
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
 
     private var loginViewState = LoginViewState()
 
@@ -52,5 +56,16 @@ class LoginViewModel : ViewModel() {
     }
 
     fun login() {
+        viewModelScope.launch {
+            loginUseCase.execute(
+                LoginUseCase.Input(
+                    username = loginViewState.userName,
+                    password = loginViewState.password
+                ),
+                success = {
+
+                },
+                error = {})
+        }
     }
 }
