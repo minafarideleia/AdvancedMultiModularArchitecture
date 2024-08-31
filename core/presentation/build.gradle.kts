@@ -1,3 +1,6 @@
+import deps.DependenciesVersions
+import deps.androidx
+import deps.domainModule
 import deps.testDebugDeps
 import deps.testDeps
 import deps.testImplDeps
@@ -10,10 +13,20 @@ apply<SharedLibraryGradlePlugin>()
 
 android {
   namespace = "com.minafarid.presentation"
+
+  composeOptions {
+    kotlinCompilerExtensionVersion = DependenciesVersions.KOTLIN_COMPILER
+  }
+
+  buildFeatures {
+    compose = true
+  }
 }
 
 dependencies {
+  androidx()
   testDeps()
+  domainModule()
   testImplDeps()
   testDebugDeps()
 }
