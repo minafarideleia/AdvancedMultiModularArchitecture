@@ -3,6 +3,9 @@ package com.minafarid.presentation
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import com.minafarid.domain.model.ErrorMessage
+import com.minafarid.presentation.views.renderEmptyScreen
+import com.minafarid.presentation.views.renderErrorFullScreen
+import com.minafarid.presentation.views.renderLoadingFullScreen
 
 sealed class StateRenderer<out S, O> {
     // S for ViewState and O for Output
@@ -100,8 +103,8 @@ sealed class StateRenderer<out S, O> {
             statRenderer.blocK() // show this first before doing any thing
 
             when (statRenderer) {
-                is Empty -> renderEmpty(statRenderer.emptyMessage)
-                is ErrorFullScreen -> renderErorrFullScreen(statRenderer.errorMessage, retryAction)
+                is Empty -> renderEmptyScreen(statRenderer.emptyMessage)
+                is ErrorFullScreen -> renderErrorFullScreen(statRenderer.errorMessage, retryAction)
                 is ErrorPopup -> renderErorrPopup(statRenderer.errorMessage, retryAction)
                 is LoadingFullScreen -> renderLoadingFullScreen(statRenderer.loadingMessage)
                 is LoadingPopup -> renderLoadingPopup(statRenderer.loadingMessage)

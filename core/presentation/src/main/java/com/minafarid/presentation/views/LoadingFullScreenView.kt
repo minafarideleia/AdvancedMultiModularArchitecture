@@ -17,18 +17,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun renderLoadingFullScreen(loadingMessage: Int) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            CircularProgressIndicator()
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = stringResource(id = loadingMessage), textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
+  Box(
+    modifier = Modifier.fillMaxSize(),
+    contentAlignment = Alignment.Center,
+  ) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+      CircularProgressIndicator()
+      Spacer(modifier = Modifier.height(16.dp))
+      Text(
+        text = stringResource(id = loadingMessage),
+        textAlign = TextAlign.Center,
+        style = MaterialTheme.typography.bodyMedium,
+      )
     }
-
+  }
 }
