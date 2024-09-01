@@ -5,11 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,45 +16,33 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.minafarid.domain.model.ErrorMessage
 import com.minafarid.presentation.R
 
 @Composable
-fun renderErrorFullScreen(errorMessage: ErrorMessage, retryAction: () -> Unit) {
+fun renderEmptyScreen(emptyMessageId: Int) {
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
-                painter = painterResource(id = R.drawable.error_ic),
-                contentDescription = "ErrorIcon",
-                modifier = Modifier.size(100.dp)
+                painter = painterResource(id = R.drawable.empty_ic),
+                contentDescription = "EmptyIcon",
+                modifier = Modifier.size(100.dp),
             )
 
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = stringResource(id = R.string.cannot_proceed),
+                text = stringResource(id = R.string.no_result),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = errorMessage.message,
+                text = stringResource(emptyMessageId),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = { retryAction() }, modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = 16.dp, end = 16.dp
-                    )
-            ) {
-                Text(text = stringResource(id = R.string.retry_again))
-            }
         }
     }
-
 }
