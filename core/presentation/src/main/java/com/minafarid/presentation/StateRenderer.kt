@@ -89,4 +89,26 @@ sealed class StateRenderer<out S, O> {
         }
         return this
     }
+
+    companion object {
+        @Composable
+        fun <S, O> of(
+            retryAction: () -> Unit = {},
+            statRenderer: StateRenderer<S, O>,
+            blocK: @Composable StateRenderer<S, O>.() -> Unit
+        ): StateRenderer<S, O> {
+            statRenderer.blocK() // show this first before doing any thing
+
+            when (statRenderer) {
+                is Empty -> renderEmpty(statRenderer.emptyMessage)
+                is ErrorFullScreen -> renderErorrFullScreen(statRenderer.errorMessage, retryAction)
+                is ErrorPopup -> renderErorrPopup(statRenderer.errorMessage, retryAction)
+                is LoadingFullScreen -> renderLoadingFullScreen(statRenderer.loadingMessage)
+                is LoadingPopup -> renderLoadingPopup(statRenderer.loadingMessage)
+                else -> {}
+            }
+            return statRenderer
+        }
+
+    }
 }
