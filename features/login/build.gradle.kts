@@ -3,6 +3,7 @@ import deps.androidx
 import deps.dataModule
 import deps.domainModule
 import deps.hilt
+import deps.presentationModule
 import deps.retrofit
 import deps.room
 import deps.testDebugDeps
@@ -33,6 +34,7 @@ dependencies {
   retrofit()
   dataModule()
   domainModule()
+  presentationModule()
   hilt()
   room()
   testDeps()
