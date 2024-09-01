@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import com.minafarid.domain.model.ErrorMessage
 import com.minafarid.presentation.views.renderEmptyScreen
 import com.minafarid.presentation.views.renderErrorFullScreen
+import com.minafarid.presentation.views.renderErrorPopup
 import com.minafarid.presentation.views.renderLoadingFullScreen
+import com.minafarid.presentation.views.renderLoadingPopup
 
 sealed class StateRenderer<out S, O> {
     // S for ViewState and O for Output
@@ -105,7 +107,7 @@ sealed class StateRenderer<out S, O> {
             when (statRenderer) {
                 is Empty -> renderEmptyScreen(statRenderer.emptyMessage)
                 is ErrorFullScreen -> renderErrorFullScreen(statRenderer.errorMessage, retryAction)
-                is ErrorPopup -> renderErorrPopup(statRenderer.errorMessage, retryAction)
+                is ErrorPopup -> renderErrorPopup(statRenderer.errorMessage, retryAction)
                 is LoadingFullScreen -> renderLoadingFullScreen(statRenderer.loadingMessage)
                 is LoadingPopup -> renderLoadingPopup(statRenderer.loadingMessage)
                 else -> {}
