@@ -13,9 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,86 +35,86 @@ import com.minafarid.presentation.R
 
 @Composable
 fun renderErrorPopup(errorMessage: ErrorMessage, retryAction: () -> Unit) {
-    var showDialog by remember { mutableStateOf(true) }
+  var showDialog by remember { mutableStateOf(true) }
 
-    fun dismissDialog() {
-        showDialog = false
-    }
-    if (showDialog) {
-        Dialog(onDismissRequest = { },
-            properties = DialogProperties(
-                dismissOnBackPress = false,
-                dismissOnClickOutside = false
-            ),
-            content = {
-                Box(
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxSize(),
-                    contentAlignment = Alignment.Center,
+  fun dismissDialog() {
+    showDialog = false
+  }
+  if (showDialog) {
+    Dialog(
+      onDismissRequest = { },
+      properties = DialogProperties(
+        dismissOnBackPress = false,
+        dismissOnClickOutside = false,
+      ),
+      content = {
+        Box(
+          modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize(),
+          contentAlignment = Alignment.Center,
+        ) {
+          Box(
+            modifier = Modifier
+              .aspectRatio(1f)
+              .fillMaxSize(0.8f)
+              .background(Color.White)
+              .padding(16.dp),
+            contentAlignment = Alignment.Center,
+          ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+              Image(
+                painter = painterResource(id = R.drawable.error_ic),
+                contentDescription = "ErrorIcon",
+                modifier = Modifier.size(100.dp),
+              )
+
+              Spacer(modifier = Modifier.height(16.dp))
+              Text(
+                text = stringResource(id = R.string.cannot_proceed),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodyMedium,
+              )
+              Spacer(modifier = Modifier.height(16.dp))
+              Text(
+                text = errorMessage.message,
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodyLarge,
+              )
+              Spacer(modifier = Modifier.height(16.dp))
+
+              Row(
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                modifier = Modifier.fillMaxWidth(),
+              ) {
+                Button(
+                  onClick = { retryAction() },
+                  modifier = Modifier
+                    .padding(
+                      8.dp,
+                    )
+                    .weight(1f),
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .aspectRatio(1f)
-                            .fillMaxSize(0.8f)
-                            .background(Color.White)
-                            .padding(16.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Image(
-                                painter = painterResource(id = R.drawable.error_ic),
-                                contentDescription = "ErrorIcon",
-                                modifier = Modifier.size(100.dp),
-                            )
-
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Text(
-                                text = stringResource(id = R.string.cannot_proceed),
-                                textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.bodyMedium,
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Text(
-                                text = errorMessage.message,
-                                textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.bodyLarge,
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-
-                            Row(
-                                horizontalArrangement = Arrangement.SpaceEvenly,
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Button(
-                                    onClick = { retryAction() },
-                                    modifier = Modifier
-                                        .padding(
-                                            8.dp
-                                        )
-                                        .weight(1f),
-                                ) {
-                                    Text(text = stringResource(id = R.string.retry_again))
-                                }
-
-                                Button(
-                                    onClick = {
-                                        dismissDialog()
-                                    },
-                                    modifier = Modifier
-                                        .padding(
-                                            8.dp
-                                        )
-                                        .weight(1f),
-                                ) {
-                                    Text(text = stringResource(id = R.string.dimiss))
-                                }
-                            }
-                        }
-                    }
+                  Text(text = stringResource(id = R.string.retry_again))
                 }
-            }
-        )
-    }
 
+                Button(
+                  onClick = {
+                    dismissDialog()
+                  },
+                  modifier = Modifier
+                    .padding(
+                      8.dp,
+                    )
+                    .weight(1f),
+                ) {
+                  Text(text = stringResource(id = R.string.dimiss))
+                }
+              }
+            }
+          }
+        }
+      },
+    )
+  }
 }
