@@ -14,7 +14,7 @@ class LoginActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      LoginScreen(viewModel.loginViewState, viewModel)
+      LoginScreen( viewModel)
     }
   }
 }

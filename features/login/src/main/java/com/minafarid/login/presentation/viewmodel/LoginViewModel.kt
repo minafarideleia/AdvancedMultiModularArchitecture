@@ -22,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
 
-    var loginViewState = LoginViewState()
+   private var loginViewState = LoginViewState()
 
     private val _stateRendererMutableState = MutableStateFlow<StateRenderer<LoginViewState, User>>(
         StateRenderer.ScreenContent(loginViewState)
