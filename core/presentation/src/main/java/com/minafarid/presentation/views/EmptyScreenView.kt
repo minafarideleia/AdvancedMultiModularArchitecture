@@ -20,29 +20,29 @@ import com.minafarid.presentation.R
 
 @Composable
 fun renderEmptyScreen(emptyMessageId: Int) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painter = painterResource(id = R.drawable.empty_ic),
-                contentDescription = "EmptyIcon",
-                modifier = Modifier.size(100.dp),
-            )
+  Box(
+    modifier = Modifier.fillMaxSize(),
+    contentAlignment = Alignment.Center,
+  ) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+      Image(
+        painter = painterResource(id = R.drawable.empty_ic),
+        contentDescription = "EmptyIcon",
+        modifier = Modifier.size(100.dp),
+      )
 
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = stringResource(id = R.string.no_result),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyMedium,
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = stringResource(emptyMessageId),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge,
-            )
-        }
+      Spacer(modifier = Modifier.height(16.dp))
+      Text(
+        text = stringResource(id = R.string.no_result),
+        textAlign = TextAlign.Center,
+        style = MaterialTheme.typography.bodyMedium,
+      )
+      Spacer(modifier = Modifier.height(16.dp))
+      Text(
+        text = stringResource(emptyMessageId),
+        textAlign = TextAlign.Center,
+        style = MaterialTheme.typography.bodyLarge,
+      )
     }
+  }
 }
