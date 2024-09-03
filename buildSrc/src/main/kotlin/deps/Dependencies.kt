@@ -18,6 +18,13 @@ object Dependencies {
     const val MATERIAL = "com.google.android.material:material:${DependenciesVersions.MATERIAL}"
     const val ANDROIDX_ACTIVITY = "androidx.activity:activity-ktx:${DependenciesVersions.ANDROIDX_ACTIVITY}"
 
+    const val navigationFragmentKtx =
+        "androidx.navigation:navigation-fragment-ktx:${DependenciesVersions.NAVIGATION}"
+    const val navigation =
+        "androidx.navigation:navigation-ui-ktx:${DependenciesVersions.NAVIGATION}"
+    const val navigation2 = "androidx.navigation:navigation-compose:${DependenciesVersions.NAVIGATION}"
+    const val googleJson = "com.google.code.gson:gson:${DependenciesVersions.GOOGLE_GSON}"
+
     const val COMPOSE_MATERIAL =
         "androidx.compose.material:material:${DependenciesVersions.COMPOSE_MATERIAL}"
     const val COMPOSE_COMPILER =
