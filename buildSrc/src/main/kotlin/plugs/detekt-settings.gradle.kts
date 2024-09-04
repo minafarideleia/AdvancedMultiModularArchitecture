@@ -79,6 +79,7 @@ tasks.named("detekt") {
     dependsOn(":core:presentation:detektBaseline")
     dependsOn(":core:datastore:detektBaseline")
     dependsOn(":core:protodatastore:detektBaseline")
+    dependsOn(":core:navigator:detektBaseline")
 }
 
 tasks.named("preBuild") {

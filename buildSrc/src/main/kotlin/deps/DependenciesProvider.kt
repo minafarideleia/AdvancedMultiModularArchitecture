@@ -88,6 +88,9 @@ fun DependencyHandler.protoDataStoreModule() {
 fun DependencyHandler.domainModule() {
     moduleImplementation(project(":core:domain"))
 }
+fun DependencyHandler.navigatorModule() {
+    moduleImplementation(project(":core:navigator"))
+}
 
 fun DependencyHandler.presentationModule() {
     moduleImplementation(project(":core:presentation"))
