@@ -1,4 +1,4 @@
-package com.minafarid.navigator
+package com.minafarid.navigator.core
 
 import androidx.navigation.NavOptionsBuilder
 import com.minafarid.navigator.event.NavigatorEvent
@@ -10,7 +10,7 @@ interface AppNavigator {
     fun popBackStack()
 
     fun navigate(
-        route: String,
+        destination: String,
         builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true }
     ): Boolean
 
