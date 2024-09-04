@@ -5,7 +5,9 @@ import com.minafarid.navigator.event.NavigatorEvent
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
+import javax.inject.Singleton
 
+@Singleton
 class AppNavigatorImpl() : AppNavigator {
     private val navigationEvents = Channel<NavigatorEvent>()
 
