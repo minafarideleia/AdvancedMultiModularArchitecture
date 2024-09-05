@@ -8,6 +8,7 @@ import deps.dataStore
 import deps.dataStoreModule
 import deps.domainModule
 import deps.hilt
+import deps.kotlinx
 import deps.loginModule
 import deps.okHttp
 import deps.presentationModule
@@ -110,6 +111,7 @@ dependencies {
   dataStoreModule()
   protoDataStoreModule()
   dataStore()
+  kotlinx()
   domainModule()
   presentationModule()
   androidx()

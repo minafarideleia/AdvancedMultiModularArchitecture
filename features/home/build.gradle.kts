@@ -1,43 +1,43 @@
+import deps.DependenciesVersions
+import deps.androidx
+import deps.dataModule
+import deps.domainModule
+import deps.hilt
+import deps.presentationModule
+import deps.retrofit
+import deps.room
+import deps.testDebugDeps
+import deps.testDeps
+import deps.testImplDeps
+import plugs.SharedLibraryGradlePlugin
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(plugs.BuildPlugins.ANDROID_LIBRARY)
+    id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
 }
+apply<SharedLibraryGradlePlugin>()
 
 android {
     namespace = "com.minafarid.home"
-    compileSdk = 34
 
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+    composeOptions {
+        kotlinCompilerExtensionVersion = DependenciesVersions.KOTLIN_COMPILER
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    buildFeatures {
+        compose = true
     }
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidx()
+    retrofit()
+    dataModule()
+    domainModule()
+    presentationModule()
+    hilt()
+    room()
+    testDeps()
+    testImplDeps()
+    testDebugDeps()
 }

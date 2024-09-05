@@ -1,3 +1,4 @@
+import deps.kotlinx
 import deps.testDebugDeps
 import deps.testDeps
 import deps.testImplDeps
@@ -13,6 +14,7 @@ android {
 }
 
 dependencies {
+  kotlinx()
   testDeps()
   testImplDeps()
   testDebugDeps()
