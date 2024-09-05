@@ -13,6 +13,8 @@ fun DependencyHandler.room() {
 fun DependencyHandler.dataStore() {
     implementation(Dependencies.datastore)
     implementation(Dependencies.kotlinCollections)
+}
+fun DependencyHandler.kotlinx() {
     implementation(Dependencies.kotlinSerilaizations)
 }
 

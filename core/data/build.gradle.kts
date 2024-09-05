@@ -2,6 +2,7 @@ import deps.chucker
 import deps.dataStore
 import deps.domainModule
 import deps.hilt
+import deps.kotlinx
 import deps.okHttp
 import deps.protoDataStoreModule
 import deps.retrofit
@@ -26,6 +27,7 @@ dependencies {
   chucker()
   retrofit()
   dataStore()
+  kotlinx()
   hilt()
   testDeps()
   testImplDeps()

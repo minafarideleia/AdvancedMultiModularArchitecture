@@ -6,7 +6,6 @@ import com.minafarid.domain.result.OutCome
 import com.minafarid.login.data.mapper.LoginMapper
 import com.minafarid.login.data.requests.LoginRequestBody
 import com.minafarid.login.data.service.LoginService
-import com.minafarid.login.domain.model.User
 
 class LoginRemoteImplementer(
   private val networkDataSource: NetworkDataSource<LoginService>,
