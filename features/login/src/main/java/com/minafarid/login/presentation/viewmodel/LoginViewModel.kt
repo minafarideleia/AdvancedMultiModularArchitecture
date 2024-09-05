@@ -2,6 +2,7 @@ package com.minafarid.login.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.minafarid.domain.model.User
 import com.minafarid.login.domain.usecase.LoginUseCase
 import com.minafarid.login.presentation.error.LoginError
 import com.minafarid.login.presentation.protocol.LoginInput
