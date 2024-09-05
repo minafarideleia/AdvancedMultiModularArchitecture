@@ -9,7 +9,7 @@ const val USER_AGE = "age"
 const val USER_FULLNAME = "fullName"
 const val HOME_ROUTE = "HomeRoute"
 
-class HomeDestination : NavigationDestination {
+object HomeDestination : NavigationDestination {
 
     fun createHome(user: String, fullName: String, age: Int): String =
         "$HOME_ROUTE/$user/$fullName/$age"
