@@ -13,33 +13,33 @@ import deps.testImplDeps
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
-    id(plugs.BuildPlugins.ANDROID_LIBRARY)
-    id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
+  id(plugs.BuildPlugins.ANDROID_LIBRARY)
+  id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
 }
 apply<SharedLibraryGradlePlugin>()
 
 android {
-    namespace = "com.minafarid.home"
+  namespace = "com.minafarid.home"
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = DependenciesVersions.KOTLIN_COMPILER
-    }
+  composeOptions {
+    kotlinCompilerExtensionVersion = DependenciesVersions.KOTLIN_COMPILER
+  }
 
-    buildFeatures {
-        compose = true
-    }
+  buildFeatures {
+    compose = true
+  }
 }
 
 dependencies {
-    androidx()
-    retrofit()
-    dataModule()
-    domainModule()
-    navigatorModule()
-    presentationModule()
-    hilt()
-    room()
-    testDeps()
-    testImplDeps()
-    testDebugDeps()
+  androidx()
+  retrofit()
+  dataModule()
+  domainModule()
+  navigatorModule()
+  presentationModule()
+  hilt()
+  room()
+  testDeps()
+  testImplDeps()
+  testDebugDeps()
 }

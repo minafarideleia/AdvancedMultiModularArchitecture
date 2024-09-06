@@ -6,18 +6,18 @@ import deps.testImplDeps
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
-    id(plugs.BuildPlugins.ANDROID_LIBRARY)
+  id(plugs.BuildPlugins.ANDROID_LIBRARY)
 }
 apply<SharedLibraryGradlePlugin>()
 
 android {
-    namespace = "com.minafarid.navigator"
+  namespace = "com.minafarid.navigator"
 }
 
 dependencies {
-    androidx()
-    hilt()
-    testDeps()
-    testImplDeps()
-    testDebugDeps()
+  androidx()
+  hilt()
+  testDeps()
+  testImplDeps()
+  testDebugDeps()
 }

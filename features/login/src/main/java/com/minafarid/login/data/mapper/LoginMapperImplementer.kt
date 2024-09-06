@@ -1,5 +1,6 @@
 package com.minafarid.login.data.mapper
 
+import com.minafarid.domain.model.User
 import com.minafarid.login.data.responses.UserResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext

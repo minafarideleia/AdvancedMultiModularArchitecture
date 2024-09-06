@@ -1,5 +1,6 @@
 package com.minafarid.login.data.source
 
+import com.minafarid.domain.model.User
 import com.minafarid.domain.result.OutCome
 
 interface LoginRemote {
