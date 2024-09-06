@@ -14,27 +14,24 @@ import com.minafarid.navigator.desinations.SignUpDestination
 import com.minafarid.signup.SignUpScreen
 
 private val composableDestinations: Map<NavigationDestination, @Composable (AppNavigator, NavHostController) -> Unit> =
-    mapOf(
-        SignUpDestination() to { _, _ -> SignUpScreen() },
-        HomeDestination to { _, navHostController -> homeScreen(navHostController) },
-        LoginDestination() to { appNavigator, _ -> LoginScreen(appNavigator = appNavigator) }
-    )
-
+  mapOf(
+    SignUpDestination() to { _, _ -> SignUpScreen() },
+    HomeDestination to { _, navHostController -> homeScreen(navHostController) },
+    LoginDestination() to { appNavigator, _ -> LoginScreen(appNavigator = appNavigator) },
+  )
 
 fun NavGraphBuilder.addComposableDestinations(
-    appNavigator: AppNavigator,
-    navHostController: NavHostController
+  appNavigator: AppNavigator,
+  navHostController: NavHostController,
 ) {
-
-    composableDestinations.forEach { entry ->
-        val destination = entry.key
-        composable(
-            route = destination.route(),
-            arguments = destination.arguments,
-            deepLinks = destination.deepLinks
-        ) {
-            entry.value(appNavigator, navHostController)
-        }
+  composableDestinations.forEach { entry ->
+    val destination = entry.key
+    composable(
+      route = destination.route(),
+      arguments = destination.arguments,
+      deepLinks = destination.deepLinks,
+    ) {
+      entry.value(appNavigator, navHostController)
     }
-
+  }
 }

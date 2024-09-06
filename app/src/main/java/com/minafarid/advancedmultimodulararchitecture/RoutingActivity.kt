@@ -1,4 +1,4 @@
-package com.minafarid.advancedmultimodulararchitecture;
+package com.minafarid.advancedmultimodulararchitecture
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.minafarid.advancedmultimodulararchitecture.nav.addComposableDestinations
-import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModularArchitectureTheme
 import com.minafarid.navigator.core.AppNavigator
 import com.minafarid.navigator.desinations.Screens
 import com.minafarid.navigator.event.NavigatorEvent
@@ -26,58 +25,53 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class RoutingActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var appNavigator: AppNavigator
+  @Inject
+  lateinit var appNavigator: AppNavigator
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
 
-        enableEdgeToEdge()
-        setContent {
-            AdvancedMultiModularArchitectureTheme {
-                appScaffold(appNavigator)
+    enableEdgeToEdge()
+    setContent {
+      appScaffold(appNavigator)
+    }
+  }
 
-            }
+  @Composable
+  fun appScaffold(appNavigator: AppNavigator) {
+    val navController = rememberNavController()
+
+    LaunchedEffect(navController) {
+      appNavigator.destinations.collect { event ->
+
+        when (event) {
+          is NavigatorEvent.Directions -> {
+            navController.navigate(
+              event.destination,
+              event.builder,
+            ) }
+
+          is NavigatorEvent.NavigateUp -> {
+            navController.navigateUp()
+          }
+
+          is NavigatorEvent.PopBackStack -> {
+            navController.popBackStack()
+          }
         }
+      }
     }
 
-    @Composable
-    fun appScaffold(appNavigator: AppNavigator) {
-        val navController = rememberNavController()
-
-        LaunchedEffect(navController) {
-            appNavigator.destinations.collect { event ->
-
-                when (event) {
-                    is NavigatorEvent.Directions -> {
-                        appNavigator.navigate(
-                            destination = event.destination, builder = event.builder
-                        )
-                    }
-
-                    NavigatorEvent.NavigateUp -> {
-                        appNavigator.navigateUp()
-                    }
-
-                    NavigatorEvent.PopBackStack -> {
-                        appNavigator.popBackStack()
-                    }
-                }
-
-            }
-
-        }
-
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            NavHost(
-                modifier = Modifier.padding(innerPadding),
-                navController = navController,
-                startDestination = Screens.LoginScreenRoute.route,
-                enterTransition = { fadeIn(animationSpec = tween(500)) },
-                exitTransition = { fadeOut(animationSpec = tween(500)) }
-            ) {
-                addComposableDestinations(appNavigator, navController)
-            }
-        }
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+      NavHost(
+        modifier = Modifier.padding(innerPadding),
+        navController = navController,
+        startDestination = Screens.LoginScreenRoute.route,
+        enterTransition = { fadeIn(animationSpec = tween(500)) },
+        exitTransition = { fadeOut(animationSpec = tween(500)) },
+      ) {
+        addComposableDestinations(appNavigator, navController)
+      }
     }
+  }
 }

@@ -20,8 +20,8 @@
         <activity
             android:name=".RoutingActivity"
             android:exported="true"
-            android:theme="@style/Theme.AdvancedMultiModularArchitecture"
-            >
+            android:theme="@style/Theme.AppCompat.Light"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -12,5 +12,5 @@ data class User(
   val photo: String,
 )
 
-fun User.toJson() : String =  Json.encodeToString(this)
-fun String.toUser() : User =  Json.decodeFromString(this)
+fun User.toJson(): String = Json.encodeToString(this)
+fun String.toUser(): User = Json.decodeFromString(this)
