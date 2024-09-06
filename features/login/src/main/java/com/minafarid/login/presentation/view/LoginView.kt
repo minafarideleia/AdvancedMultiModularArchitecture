@@ -33,127 +33,132 @@ import com.minafarid.navigator.core.AppNavigator
 import com.minafarid.navigator.desinations.HomeDestination
 import com.minafarid.navigator.desinations.Screens
 import com.minafarid.presentation.StateRenderer
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun LoginScreen(appNavigator: AppNavigator) {
-    val loginViewModel: LoginViewModel = hiltViewModel()
-    val stateRenderer by loginViewModel.stateRendererFlow.collectAsState()
-    // React to viewOutput events
+  val loginViewModel: LoginViewModel = hiltViewModel()
+  val stateRenderer by loginViewModel.stateRendererFlow.collectAsState()
+  // React to viewOutput events
 
-    LaunchedEffect(loginViewModel) {
-        loginViewModel.viewOutput.collect { output ->
-            when (output) {
-                is LoginOutput.NavigateToMain -> {
-                    val mainOutput = output as LoginOutput.NavigateToMain
-                    appNavigator.navigate(
-                        HomeDestination.createHome(
-                            user = mainOutput.user.toJson(), age = 36,
-                            fullName = mainOutput.user.fullName
-                        )
-                    )
-                }
-
-                is LoginOutput.NavigateToRegister -> {
-                    appNavigator.navigate(Screens.SignUpScreenRoute.route)
-                }
-
-                is LoginOutput.ShowError -> {
-                    TODO()
-                }
-            }
+  LaunchedEffect(loginViewModel) {
+    loginViewModel.viewOutput.collect { output ->
+      when (output) {
+        is LoginOutput.NavigateToMain -> {
+          val mainOutput = output as LoginOutput.NavigateToMain
+          appNavigator.navigate(
+            HomeDestination.createHome(
+              user = mainOutput.user.toJson(),
+              age = 36,
+              fullName = mainOutput.user.fullName,
+            ),
+          )
         }
+
+        is LoginOutput.NavigateToRegister -> {
+          appNavigator.navigate(Screens.SignUpScreenRoute.route)
+        }
+
+        is LoginOutput.ShowError -> {
+          TODO()
+        }
+      }
     }
+  }
 
-    // State Renderer
+  // State Renderer
 
-    StateRenderer.of(statRenderer = stateRenderer, retryAction = { loginViewModel.login() }) {
-        onUiState { updatedState ->
-            ScreeUiContent(updatedState, loginViewModel)
-        }
-        onLoadingState { _ ->
-            // ScreeUiContent(updatedState, loginViewModel)
-        }
-        onSuccessState { user ->
-            appNavigator.navigate(
-                HomeDestination.createHome(
-                    user = user.toJson(), age = 36,
-                    fullName = user.fullName
-                )
-            )
-        }
-        onEmptyState {
-        }
-        onErrorState { _ ->
-            // ScreeUiContent(updatedState, loginViewModel)
-        }
+  StateRenderer.of(statRenderer = stateRenderer, retryAction = { loginViewModel.login() }) {
+    onUiState { updatedState ->
+      ScreeUiContent(updatedState, loginViewModel)
     }
+    onLoadingState { _ ->
+      // ScreeUiContent(updatedState, loginViewModel)
+    }
+    onSuccessState { user ->
+      val encodedUserJson = URLEncoder.encode(user.toJson(), StandardCharsets.UTF_8.toString())
+      appNavigator.navigate(
+        HomeDestination.createHome(
+          user = encodedUserJson,
+          age = 36,
+          fullName = user.fullName,
+        ),
+      )
+    }
+    onEmptyState {
+    }
+    onErrorState { _ ->
+      // ScreeUiContent(updatedState, loginViewModel)
+    }
+  }
 }
 
 @Composable
 fun ScreeUiContent(loginViewState: LoginViewState, loginViewModel: LoginViewModel) {
-    Surface(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-        ) {
-            CustomTextField(
-                label = stringResource(id = R.string.username_label),
-                value = loginViewState.userName,
-                errorText = stringResource(id = loginViewState.userNameError.getErrorMessage()),
-                showError = loginViewState.showUsernameError(),
-            ) { userName ->
-                loginViewModel.setInput(LoginInput.UserNameUpdated(userName))
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            CustomTextField(
-                label = stringResource(id = R.string.password_label),
-                value = loginViewState.password,
-                errorText = stringResource(id = loginViewState.passwordError.getErrorMessage()),
-                showError = loginViewState.showPasswordError(),
-            ) { password ->
-                loginViewModel.setInput(LoginInput.PasswordUpdated(password))
-            }
-            Spacer(modifier = Modifier.height(16.dp))
+  Surface(modifier = Modifier.fillMaxSize()) {
+    Column(
+      modifier = Modifier.padding(16.dp),
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center,
+    ) {
+      CustomTextField(
+        label = stringResource(id = R.string.username_label),
+        value = loginViewState.userName,
+        errorText = stringResource(id = loginViewState.userNameError.getErrorMessage()),
+        showError = loginViewState.showUsernameError(),
+      ) { userName ->
+        loginViewModel.setInput(LoginInput.UserNameUpdated(userName))
+      }
+      Spacer(modifier = Modifier.height(16.dp))
+      CustomTextField(
+        label = stringResource(id = R.string.password_label),
+        value = loginViewState.password,
+        errorText = stringResource(id = loginViewState.passwordError.getErrorMessage()),
+        showError = loginViewState.showPasswordError(),
+      ) { password ->
+        loginViewModel.setInput(LoginInput.PasswordUpdated(password))
+      }
+      Spacer(modifier = Modifier.height(16.dp))
 
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = { loginViewModel.login() },
-            ) {
-                Text(text = "Login")
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            TextButton(onClick = { loginViewModel.setInput(LoginInput.RegisterButtonClicked) }) {
-                Text(text = "Sign up Now!")
-            }
-        }
+      Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { loginViewModel.login() },
+      ) {
+        Text(text = "Login")
+      }
+      Spacer(modifier = Modifier.height(16.dp))
+      TextButton(onClick = { loginViewModel.setInput(LoginInput.RegisterButtonClicked) }) {
+        Text(text = "Sign up Now!")
+      }
     }
+  }
 }
 
 @Composable
 fun CustomTextField(
-    label: String,
-    value: String,
-    showError: Boolean,
-    errorText: String,
-    visualTransformation: VisualTransformation = VisualTransformation.None,
-    onChanged: (String) -> Unit,
+  label: String,
+  value: String,
+  showError: Boolean,
+  errorText: String,
+  visualTransformation: VisualTransformation = VisualTransformation.None,
+  onChanged: (String) -> Unit,
 ) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = { onChanged(it) },
-        label = { Text(text = label) },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-        isError = showError,
-        visualTransformation = visualTransformation,
+  OutlinedTextField(
+    value = value,
+    onValueChange = { onChanged(it) },
+    label = { Text(text = label) },
+    modifier = Modifier
+      .fillMaxWidth()
+      .padding(8.dp),
+    isError = showError,
+    visualTransformation = visualTransformation,
+  )
+  if (showError) {
+    Text(
+      text = errorText,
+      color = Color.Red,
+      modifier = Modifier.padding(all = 8.dp),
     )
-    if (showError) {
-        Text(
-            text = errorText,
-            color = Color.Red,
-            modifier = Modifier.padding(all = 8.dp),
-        )
-    }
+  }
 }
