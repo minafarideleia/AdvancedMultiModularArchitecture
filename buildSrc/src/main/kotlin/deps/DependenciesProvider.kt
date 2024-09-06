@@ -97,6 +97,9 @@ fun DependencyHandler.navigatorModule() {
 fun DependencyHandler.presentationModule() {
     moduleImplementation(project(":core:presentation"))
 }
+fun DependencyHandler.paymentModule() {
+    moduleImplementation(project(":core:payment"))
+}
 
 fun DependencyHandler.homeModule() {
     moduleImplementation(project(":features:home"))
