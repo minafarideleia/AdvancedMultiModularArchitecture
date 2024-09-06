@@ -4,14 +4,21 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.minafarid.advancedmultimodulararchitecture.nav.addComposableDestinations
 import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModularArchitectureTheme
 import com.minafarid.navigator.core.AppNavigator
+import com.minafarid.navigator.desinations.Screens
 import com.minafarid.navigator.event.NavigatorEvent
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -62,7 +69,15 @@ class RoutingActivity : ComponentActivity() {
         }
 
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
+            NavHost(
+                modifier = Modifier.padding(innerPadding),
+                navController = navController,
+                startDestination = Screens.LoginScreenRoute.route,
+                enterTransition = { fadeIn(animationSpec = tween(500)) },
+                exitTransition = { fadeOut(animationSpec = tween(500)) }
+            ) {
+                addComposableDestinations(appNavigator, navController)
+            }
         }
     }
 }

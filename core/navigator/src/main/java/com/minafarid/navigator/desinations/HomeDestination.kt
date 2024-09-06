@@ -14,7 +14,7 @@ object HomeDestination : NavigationDestination {
     fun createHome(user: String, fullName: String, age: Int): String =
         "$HOME_ROUTE/$user/$fullName/$age"
 
-    override fun destination(): String = Screens.HomeScreenRoute.route
+    override fun route(): String = Screens.HomeScreenRoute.route
 
     override val arguments: List<NamedNavArgument>
         get() = listOf(
