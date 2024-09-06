@@ -101,6 +101,9 @@ fun DependencyHandler.presentationModule() {
 fun DependencyHandler.homeModule() {
     moduleImplementation(project(":features:home"))
 }
+fun DependencyHandler.signupModule() {
+    moduleImplementation(project(":features:signup"))
+}
 
 fun DependencyHandler.testDeps() {
     testImplementation(TestDependencies.ANDROIDX_JUNIT)
