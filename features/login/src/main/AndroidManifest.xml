@@ -3,17 +3,6 @@
 
     <application>
 
-        <activity
-            android:name=".presentation.view.LoginActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light"
-        >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
