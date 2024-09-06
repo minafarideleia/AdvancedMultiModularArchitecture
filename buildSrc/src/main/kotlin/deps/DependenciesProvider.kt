@@ -74,6 +74,9 @@ fun DependencyHandler.androidx() {
 fun DependencyHandler.loginModule() {
     moduleImplementation(project(":features:login"))
 }
+fun DependencyHandler.signUpModule() {
+    moduleImplementation(project(":features:signup"))
+}
 
 fun DependencyHandler.dataModule() {
     moduleImplementation(project(":core:data"))
